@@ -4,7 +4,7 @@ env:
     # master SHA256-606c78f9bd55e946b34762b7f54b65177eaa37a3fc42559ea62712cf30431b2b
     - secure: ""
     # beta SHA256-
-    # - secure: ""
+    - secure: "qaQtslfW/hfDiP8yfVVqqdStQz+LtN+z0N8/oKbFPZutenJ9pMrbR1jX1XC4uYoBKGxYpZF0l1B6VyeyHgQgwy9fM9mvc3ACOjagfdoXA2VxRzLG2vnd6Ypi1PwDq5LCPBRFXJ1dGC6fPZjqB8nnZR/HR53IcGFIl+mu7fWrEigOEu5U9X5q2fxePd8jV2j5q+A7/YbfPSxIiudVbdbNJugwjKNVYmvBTSA9rc3k569WdHKlDIOEYLj1n6DKuUeCEpXG1l/YEhnUabXgeaNJ5zkTRzzLdEQBPjihtkVvXVQZ/o09Is37oM6JaEU+1a34Pu0z1hyUFL8B4tsYewMI8J1o7geXT3n0OaJFdOz6sV4NdmH4tE2ouWldflCX85RXmxJej9wvnjs5suX0HbufIbrdaFeFqVwI8fBwkaCRnOCnf7AqdOOVpbXREJMNFTI3jiXOUJg2RBebF+FlKpDuDSA+ebU1LFTGL1n3yXE1BRMgiYRfQfJxuR0JmCQqzXFOVIq+cuvoigtZW06+n8sVlBhxuhIihYzHx+LQHMjmiGyd1o/ttoh/ry++h9yU5PFehRinkgeV+LPnQnBrmLvQ8Kt7oNsSNYEVgpVADlAB0hXKWetdN8XdHytvm8DZaZ+D8B1yTrsW94pmYHNoNr9sEhhKu3GxCbqqpUnS6oJKaD4="
 install:
   - npm install -g csslint htmlhint
   - wget -O /tmp/phantomjs-netlog.js https://gist.githubusercontent.com/memiux/0e8377f9361fefce64e848e74fa3232c/raw/phantomjs-netlog.js
