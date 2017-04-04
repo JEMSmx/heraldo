@@ -1,8 +1,8 @@
 env:
   global:
-    - PROJECT_NAME: "processwire-demo"
+    - PROJECT_NAME: "archivo-digital"
     # master SHA256-606c78f9bd55e946b34762b7f54b65177eaa37a3fc42559ea62712cf30431b2b
-    - secure: "eEIDludUFSgz8zlQxsVzh/saJ5xw7tJorYDMvD1j4SHm+VK046t1ATe5YEnGs0XMioC9nhm0sqEj7u8yHnXnYtnKSNBwjwSMnknxBdUiRGNub5tN9XwIrpaSxRkUb1rR1YISSPLIUKlu62PIQSKiWP3jM/XNswPHWGsbH2vL1POwX8lYk/EYvyB1SlpipFamJVGtnAptcUZvTyGWfHVsO06fwIknhtsWlms/E/299cAc+jSr0c6zeRmDmETxbInYZ6BgRREFAmSlQaM2Hz2fbZnZ8qBBhzAvgr2yZ+d98DS+K33Qi+rR2i9+nG1hC8NUhmWm4OWSQ834TNHYfN2n80gWETfwwrQ5AGAwMjbjZJPPTvpEdlcPPhBNzHkDyFx/tqPuqskAtTIDAyD9tDk1R7Om+9ym+aAMu+Om9KRF5vxHtf5Y8wWUDDB89di/d5w+MNhD/CzzT/V7W9pDW9NhPqIRuyUKGuGxe7zW42Cp64icG3E5nmoZESuRcK5Mw+rN46s05PEJ3mqaDiNBKv2PD/5DdZrojBfE900ym/nVF/ctuJBKOEH+t0CpCWihKaY2dg0aGVGQ+pCbvimqptpx1E2QNSzwwDlhHwIC6HSXTTJbLVPP5pK3i/woNAKIz3eniyeqZdr43mvNRKQslDVS0qUzpoSk2umR0l+iDFKhOho="
+    - secure: ""
     # beta SHA256-
     # - secure: ""
 install:
