@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,500,700" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css" integrity="sha256-K3Njjl2oe0gjRteXwX01fQD5fkk9JFFBdUHy/h38ggY=" crossorigin="anonymous" rel="stylesheet">
   <link href="https://cdn.rawgit.com/cobyism/gridism/0.2.2/gridism.css" rel="stylesheet">
-  <link href="<?php echo $config->urls->templates; ?>static/455375-147357/styles/_main.css" rel="stylesheet">
+  <link href="<?php echo $config->urls->templates; ?>assets/styles/_main.css" rel="stylesheet">
   <link rel="apple-touch-icon" href="https://dummyimage.com/50x50/000/fff">
   <link rel="shortcut icon" href="https://dummyimage.com/50x50/000/fff">
 </head>
