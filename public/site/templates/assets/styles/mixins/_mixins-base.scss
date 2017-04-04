@@ -1,0 +1,171 @@
+// =========================================================================================
+// -------------------------------- 🇬🇳 Erick Leos Mixins 🇬🇳 --------------------------------
+//           ,--.
+//       ,--/  /|                                                                ,---,
+//    ,---,': / '                                                              ,--.' |
+//    :   : '/ /   __  ,-.  __  ,-.  __  ,-.         ,--,      ,---,           |  |  :
+//    |   '   ,  ,' ,'/ /|,' ,'/ /|,' ,'/ /|       ,'_ /|  ,-+-. /  |          :  :  :
+//    '   |  /   '  | |' |'  | |' |'  | |' |  .--. |  | : ,--.'|'   |   ,---.  :  |  |,--.
+//    |   ;  ;   |  |   ,'|  |   ,'|  |   ,','_ /| :  . ||   |  ,"' |  /     \ |  :  '   |
+//    :   '   \  '  :  /  '  :  /  '  :  /  |  ' | |  . .|   | /  | | /    / ' |  |   /' :
+//    |   |    ' |  | '   |  | '   |  | '   |  | ' |  | ||   | |  | |.    ' /  '  :  | | |
+//    '   : |.  \;  : |   ;  : |   ;  : |   :  | : ;  ; ||   | |  |/ '   ; :__ |  |  ' | :
+//    |   | '_\.'|  , ;   |  , ;   |  , ;   '  :  `--'   \   | |--'  '   | '.'||  :  :_:,'
+//    '   : |     ---'     ---'     ---'    :  ,      .-./   |/      |   :    :|  | ,'
+//    ;   |,'                                `--`----'   '---'        \   \  / `--''
+//    '---'                                                            `----'
+// ========================================================================================
+
+// =============================================================================
+// Guidelines to easy layout building
+// =============================================================================
+    $max-width:1200px;
+  //Max-width to work
+    @mixin workspace($max-width){
+      max-width: $max-width;
+      margin: 0 auto;
+      padding-right: 15px;
+      padding-left: 15px;
+    }
+    @mixin workspace-80($max-width){
+      max-width: $max-width * .8;
+      margin:0 auto;
+      padding-right: 15px;
+      padding-left: 15px;
+    }
+  //Container space
+    @mixin box-75{
+      padding-top: 75px;
+      padding-bottom: 75px;
+    }
+    @mixin box-50{
+      padding-top: 50px;
+      padding-bottom: 50px;
+    }
+    @mixin box-25{
+      padding-top: 25px;
+      padding-bottom: 25px;
+    }
+    @mixin box-15{
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+
+  //Paddings
+    @mixin top-50{
+      margin-top:50px
+    }
+    @mixin top-25{
+      margin-top:25px
+    }
+    @mixin top-15{
+      margin-top:15px
+    }
+
+    @mixin sub-50{
+      margin-bottom:50px
+    }
+    @mixin sub-25{
+      margin-bottom:25px
+    }
+    @mixin sub-15{
+      margin-bottom:15px
+    }
+
+
+
+// =============================================================================
+// Box Shadow
+// =============================================================================
+
+    @mixin shadow($left, $bottom, $blur, $color){
+      -webkit-box-shadow: $left $bottom $blur $color;
+         -moz-box-shadow: $left $bottom $blur $color;
+              box-shadow: $left $bottom $blur $color;
+    }
+
+// =============================================================================
+//Center Css like a Boss
+// =============================================================================
+
+    @mixin center-center(){
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+
+    @mixin left-center(){
+      display:flex;
+      align-items:center;
+    }
+
+    @mixin right-center(){
+        display:flex;
+        align-items:center;
+        justify-content:flex-end;
+    }
+
+    @mixin left-bottom(){
+        display:flex;
+        align-items:flex-end;
+    }
+
+// =============================================================================
+// String Replace  --By Jonathantneal(Github user)
+// =============================================================================
+
+    @function str-replace($string, $search, $replace: "") {
+        $index: str-index($string, $search);
+
+        @if $index {
+            @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+        }
+
+        @return $string;
+    }
+
+// =============================================================================
+// Gradient Background
+// =====================-=======================================================
+    @mixin back-gradient($color){
+        background: linear-gradient(to bottom, lighten($color, 10%) 0%,darken($color, 5%) 100%);
+        background: -moz-linear-gradient(top, lighten($color, 10%) 0%, darken($color, 5%) 100%);
+        background: -webkit-linear-gradient(top, lighten($color, 10%) 0%,darken($color, 5%) 100%);
+        background-size: auto 200%;
+        background-position: 0 0;
+        transition: background-position .3s ease-out;
+        -webkit-transition: background-position .3s ease-out;
+        -moz-transition: background-position .3s ease-out;
+        -o-transition: background-position .3s ease-out;
+
+
+        &:hover {
+         background-position: 0 100%;
+        }
+    }
+// =============================================================================
+// Font Face   --By Jonathantneal(Github user)
+// =============================================================================
+
+    @mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
+        $src: null;
+        $extmods: (
+            eot: "?",
+            svg: "#" + str-replace($name, " ", "_")
+        );
+        $formats: (
+            otf: "opentype",
+            ttf: "truetype"
+        );
+        @each $ext in $exts {
+            $extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+            $format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+            $src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma);
+        }
+        @font-face {
+            font-family: quote($name);
+            font-style: $style;
+            font-weight: $weight;
+            src: $src;
+        }
+    }

@@ -1,0 +1,122 @@
+// Colors
+$white: #ffffff;
+$black: #000000;
+$color-primary:   #323232;  .k-color-primary   { color: $color-primary;   };  .k-bg-color-primary   { background-color: $color-primary;   }
+$color-secondary: #2e7e88;  .k-color-secondary { color: $color-secondary; };  .k-bg-color-secondary { background-color: $color-secondary; }
+$color-inverse:   #fff;     .k-color-inverse   { color: $color-inverse;   };  .k-bg-color-inverse   { background-color: $color-inverse;   }
+$color-success:   #5CB85C;  .k-color-success   { color: $color-success;   };  .k-bg-color-success   { background-color: $color-success;   }
+$color-info:      #5bc0de;  .k-color-info      { color: $color-info;      };  .k-bg-color-info      { background-color: $color-info;      }
+$color-warning:   #F0AD4E;  .k-color-warning   { color: $color-warning;   };  .k-bg-color-warning   { background-color: $color-warning;   }
+$color-danger:    #D9534F;  .k-color-danger    { color: $color-danger;    };  .k-bg-color-danger    { background-color: $color-danger;    }
+
+// Grayscale
+$gray-base:    lighten(#000, 0%);         .k-gray-base    { color: $gray-base;    };  .k-bg-gray-base    { background-color: $gray-base;    }
+$gray-darker:  lighten($gray-base, 15%);  .k-gray-darker  { color: $gray-darker;  };  .k-bg-gray-darker  { background-color: $gray-darker;  }
+$gray-dark:    lighten($gray-base, 35%);  .k-gray-dark    { color: $gray-dark;    };  .k-bg-gray-dark    { background-color: $gray-dark;    }
+$gray-regular: lighten($gray-base, 50%);  .k-gray-regular { color: $gray-regular; };  .k-bg-gray-regular { background-color: $gray-regular; }
+$gray-light:   lighten($gray-base, 65%);  .k-gray-light   { color: $gray-light;   };  .k-bg-gray-light   { background-color: $gray-light;   }
+$gray-lighter: lighten($gray-base, 85%);  .k-gray-lighter { color: $gray-lighter; };  .k-bg-gray-lighter { background-color: $gray-lighter; }
+$gray-ghost:   lighten($gray-base, 90%);  .k-gray-ghost   { color: $gray-ghost;   };  .k-bg-gray-ghost   { background-color: $gray-ghost;   }
+
+$body-bg-color: $white;
+$inner-body-bg: $white;
+
+// Vertical space
+$vs-100p: 100px;
+$vs-75p: $vs-100p * .75;
+$vs-50p: $vs-100p * .50;  .k-vs-50p { margin-bottom: $vs-50p; }
+$vs-25p: $vs-100p * .25;  .k-vs-25p { margin-bottom: $vs-25p; }
+$vs-15p: $vs-100p * .15;
+
+// font family
+$font-family-base: 'Raleway', sans-serif;;
+$headings-font-family: 'Raleway', sans-serif;;
+$font-size-base: 18px;
+
+// media queries 
+$units-stack: 768px;
+$screen-xs-min: 609px;
+$screen-sm-min: 808px + 17;
+$screen-md-min: 1032px + 17;
+$screen-lg-min: 1240px + 17;
+$screen-xs-max: $screen-sm-min - 1;
+
+// Variables para vista de producto.
+$stock-available-color: #5cb85c;
+$action-button-color: $color-primary;
+
+
+// general - defaults
+*, *:after, *:before { -webkit-box-sizing: border-box; box-sizing: border-box; }
+.clearfix:before, .clearfix:after { content: ''; display: table; }
+.clearfix:after { clear: both; }
+
+html, body {
+	height: 100%;
+}
+
+body {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  line-height: 1;
+  background-color: $body-bg-color;
+  min-height: 500px;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+
+ul, ol {
+  &.k-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+}
+
+h1, h2, h3, h4, h5, h6, p, figure, ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: $headings-font-family;
+    color: $color-primary;
+}
+
+a {
+  -webkit-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+  text-decoration: none;
+}
+
+p {
+    color: $color-primary;
+    line-height: 24px / $font-size-base;
+}
+
+// Helper Classes
+
+.k-img-absolute {
+      display: block;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 0;
+      right: 0; 
+      margin: auto;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+img {
+    max-width: 100%; // Hacer todas las img responsive.
+}

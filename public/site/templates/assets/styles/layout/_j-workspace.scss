@@ -1,0 +1,11 @@
+.j-workspace {
+    // won't use "wrap wider";
+    box-sizing: border-box;
+  color: $gray-dark;
+    .j-wrap {
+      margin: 0 auto; 
+      max-width: 1232px;
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+}

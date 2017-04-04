@@ -1,0 +1,106 @@
+header {
+  margin-top: 48px;
+  margin-bottom: 48px;
+  display: flex;
+  align-items: center;
+  img {
+    height: 48px;
+  }
+  h1 {
+    margin-left: 16px;
+  }
+  .user-dropdown {
+    a{
+      display: flex;
+      align-items: center;
+      margin-left: 16px;
+      img {
+        height: 16px;
+        margin-left: 8px;
+      }
+    }
+  }
+}
+.sub-categories {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  justify-content: flex-start;
+  max-width: 100%;
+  a {
+    color: $gray-dark;
+    margin-right: 16px;
+    &:last-child {
+      margin-right: 0;
+    }
+    &:hover {
+      color: $gray-darker;
+    }
+  }
+}
+
+.album-unit {
+  text-align: center;
+  min-height: 370px;
+  .image-album {
+    height: 240px;
+    width: 240px;
+    margin: 0 auto;
+    margin-bottom: 16px;
+    background-color: rgba(0, 0, 0, 0.05);;
+    background-size: contain;
+    background-image: url(https://cdn-images-1.medium.com/max/1080/1*GRyKBtXZXR2GB2IKBll1cg.jpeg);
+    background-position: center;
+    background-repeat: no-repeat;
+    &:hover {
+      .image-album-overlay {
+        opacity: 1;
+        display: flex;
+      }
+    }
+    &-overlay {
+      display: none;
+      opacity: 0.0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+      -webkit-transition: all 200ms ease-in-out;
+      transition: all 200ms ease-in-out;
+      a {
+        height: 33.33%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-transition: all 400ms ease-in-out;
+        transition: all 400ms ease-in-out;
+        p {
+          color: $color-inverse;
+        }
+        &:first-child {
+          background-color: rgba(0, 0, 0, 0.15);
+          &:hover {
+           background-color: rgba($color-secondary, 0.4);
+          }
+        }
+        &:nth-child(2)  {
+          background-color: rgba(0, 0, 0, 0.25);
+          &:hover {
+           background-color: rgba($color-secondary, 0.4);
+          }
+        }
+        &:nth-child(3)  {
+          background-color: rgba(0, 0, 0, 0.35);
+          &:hover {
+           background-color: rgba($color-secondary, 0.4);
+          }
+        }
+      }
+    }
+  }
+  h3 {
+    margin-bottom: 8px;
+  }
+}
