@@ -1,3 +1,4 @@
+<?php if(!$user->isLoggedin()) $session->redirect("/iniciar-sesion"); ?>
 <!DOCTYPE html>
 <head>
   <meta charset="UTF-8">

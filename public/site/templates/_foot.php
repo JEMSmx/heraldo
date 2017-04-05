@@ -1,4 +1,4 @@
-<script src="<?php echo $config->urls->templates; ?>static/455375-147357/scripts/classie.js"></script>
+<script src="<?php echo $config->urls->templates; ?>static/455375-147357/scripts/main.min.js"></script>
   <script>
     (function() {
         var morphSearch = document.getElementById( 'morphsearch' ),

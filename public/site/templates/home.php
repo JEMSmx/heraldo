@@ -1,4 +1,8 @@
-<?php include('./_head.php'); ?>
+<?php include('./_head.php');
+
+
+ 
+?>
 
  <div class="j-workspace">
      <div class="j-wrap">
