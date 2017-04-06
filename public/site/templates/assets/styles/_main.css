@@ -5,10 +5,10 @@
   background-color: #323232; }
 
 .k-color-secondary {
-  color: #2e7e88; }
+  color: #3ba1ae; }
 
 .k-bg-color-secondary {
-  background-color: #2e7e88; }
+  background-color: #3ba1ae; }
 
 .k-color-inverse {
   color: #fff; }
@@ -109,7 +109,11 @@ body {
   background-color: #ffffff;
   min-height: 500px;
   overflow-x: hidden;
-  overflow-y: scroll; }
+  overflow-y: scroll;
+  word-break: break-word;
+  font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: antialiased; }
 
 ul.k-list, ol.k-list {
   padding: 0;
@@ -123,6 +127,8 @@ h1, h2, h3, h4, h5, h6, p, figure, ul, li {
 h1, h2, h3, h4, h5, h6 {
   font-family: "Raleway", sans-serif;
   color: #323232; }
+  h1::first-letter, h2::first-letter, h3::first-letter, h4::first-letter, h5::first-letter, h6::first-letter {
+    color: #3ba1ae; }
 
 a {
   -webkit-transition: all 200ms ease-in-out;
@@ -158,12 +164,14 @@ img {
 .sidebar {
   max-width: 50%;
   float: left;
-  padding: 40px; }
-
-.sidebar {
-  padding: 0 50px 0 0;
+  padding: 0 40px 0 0;
   float: right;
   min-height: 9em; }
+  @media screen and (max-width: 970px) {
+    .sidebar {
+      padding: 0; }
+      .sidebar nav {
+        margin: 0; } }
 
 .sidebar > nav {
   float: left;
@@ -205,11 +213,15 @@ img {
         color: #595959; }
         .sidebar > nav .dropdown ul li:hover {
           color: #262626; }
+  @media screen and (max-width: 970px) {
+    .sidebar > nav {
+      margin: 0;
+      padding-right: 20px; } }
 
 .morphsearch {
   width: 200px;
   min-height: 40px;
-  background: #f1f1f1;
+  background: #f3f3f3;
   position: absolute;
   z-index: 10000;
   top: 48px;
@@ -227,11 +239,12 @@ img {
   width: 100%;
   min-height: 100%;
   top: 0px;
-  right: 0px; }
+  right: 0px;
+  left: 0; }
 
 .morphsearch-form {
   width: 100%;
-  height: 40px;
+  height: 42px;
   margin: 0 auto;
   position: relative;
   -webkit-transition-property: width, height, -webkit-transform;
@@ -251,10 +264,10 @@ img {
   width: 100%;
   height: 100%;
   padding: 0 10% 0 10px;
-  font-weight: 700;
+  font-weight: 800;
   border: none;
   background: transparent;
-  font-size: 0.8em;
+  font-size: 16px;
   color: #2e7e88;
   -webkit-transition: font-size 0.5s cubic-bezier(0.7, 0, 0.3, 1);
   transition: font-size 0.5s cubic-bezier(0.7, 0, 0.3, 1); }
@@ -273,16 +286,16 @@ img {
 
 /* placeholder */
 .morphsearch-input::-webkit-input-placeholder {
-  color: #c2c2c2; }
+  color: #323232; }
 
 .morphsearch-input:-moz-placeholder {
-  color: #c2c2c2; }
+  color: #323232; }
 
 .morphsearch-input::-moz-placeholder {
-  color: #c2c2c2; }
+  color: #323232; }
 
 .morphsearch-input:-ms-input-placeholder {
-  color: #c2c2c2; }
+  color: #323232; }
 
 /* hide placeholder when active in Chrome */
 .gn-search:focus::-webkit-input-placeholder {
@@ -503,9 +516,9 @@ input[type="search"] {
     transform: translate3d(0, -50%, 0) scale3d(0.5, 0.5, 1); } }
 @media screen and (max-width: 60.625em) {
   .morphsearch {
-    width: 80%;
-    top: 10%;
-    right: 10%; } }
+    width: 90%;
+    top: 16px;
+    left: 16px; } }
 .j-workspace {
   box-sizing: border-box;
   color: #595959; }
@@ -522,33 +535,70 @@ header {
   align-items: center; }
   header img {
     height: 48px; }
+    @media screen and (max-width: 768px) {
+      header img {
+        display: none; } }
   header h1 {
     margin-left: 16px; }
-  header .user-dropdown a {
-    display: flex;
-    align-items: center;
-    margin-left: 16px; }
-    header .user-dropdown a img {
-      height: 16px;
-      margin-left: 8px; }
+  @media screen and (max-width: 1000px) {
+    header {
+      margin-top: 72px;
+      margin-bottom: 16px; } }
+  @media screen and (max-width: 768px) {
+    header h1 {
+      margin-left: 0; } }
 
-.sub-categories {
+.sub-categories-container .sub-categories {
   display: flex;
   list-style: none;
   align-items: center;
   justify-content: flex-start;
   max-width: 100%; }
-  .sub-categories a {
+  .sub-categories-container .sub-categories a {
     color: #595959;
     margin-right: 16px; }
-    .sub-categories a:last-child {
+    .sub-categories-container .sub-categories a:last-child {
       margin-right: 0; }
-    .sub-categories a:hover {
+    .sub-categories-container .sub-categories a:hover {
       color: #262626; }
+.sub-categories-container select {
+  display: none;
+  height: 42px;
+  padding-left: 8px;
+  border: none;
+  border-radius: 0;
+  background-color: #f3f3f3;
+  color: #818080;
+  font-size: 16px;
+  font-weight: 800;
+  min-width: 160px; }
+@media screen and (max-width: 768px) {
+  .sub-categories-container .sub-categories {
+    display: none; }
+  .sub-categories-container select {
+    display: block; } }
+
+.albums-grid h2 {
+  margin-top: 24px;
+  margin-bottom: 24px; }
+.albums-grid .grid .unit {
+  padding-left: 16px;
+  padding-right: 16px; }
+  .albums-grid .grid .unit:first-child {
+    padding-left: 0;
+    padding-right: 16px; }
 
 .album-unit {
   text-align: center;
-  min-height: 370px; }
+  min-height: 370px;
+  -webkit-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out; }
+  @media screen and (max-width: 1000px) {
+    .album-unit {
+      width: 33.33% !important; } }
+  @media screen and (max-width: 800px) {
+    .album-unit {
+      width: 50% !important; } }
   .album-unit .image-album {
     height: 240px;
     width: 240px;
@@ -585,15 +635,15 @@ header {
         .album-unit .image-album-overlay a:first-child {
           background-color: rgba(0, 0, 0, 0.15); }
           .album-unit .image-album-overlay a:first-child:hover {
-            background-color: rgba(46, 126, 136, 0.4); }
+            background-color: rgba(59, 161, 174, 0.4); }
         .album-unit .image-album-overlay a:nth-child(2) {
           background-color: rgba(0, 0, 0, 0.25); }
           .album-unit .image-album-overlay a:nth-child(2):hover {
-            background-color: rgba(46, 126, 136, 0.4); }
+            background-color: rgba(59, 161, 174, 0.4); }
         .album-unit .image-album-overlay a:nth-child(3) {
           background-color: rgba(0, 0, 0, 0.35); }
           .album-unit .image-album-overlay a:nth-child(3):hover {
-            background-color: rgba(46, 126, 136, 0.4); }
+            background-color: rgba(59, 161, 174, 0.4); }
   .album-unit h3 {
     margin-bottom: 8px; }
 

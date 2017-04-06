@@ -1,35 +1,30 @@
 <?php include('./_head.php');
-
-
- 
-?>
-
- <div class="j-workspace">
-     <div class="j-wrap">
+    $field = $fields->get('category');
+    $all_options = $field->type->getOptions($field); ?>
+  <div class="j-workspace">
+     <div class="j-wrap sub-categories-container">
        <ul class="sub-categories">
-         <a href="#">
-           <li> Categoria uno</li>
+       <a href="#">
+           <li>Recientes</li>
          </a>
-         <a href="#">
-           <li> Categoria uno</li>
+       <?php foreach ($all_options as $option) { ?>
+        <a href="#">
+           <li><?php echo $option->title; ?></li>
          </a>
-         <a href="#">
-           <li> Categoria uno</li>
-         </a>
-         <a href="#">
-           <li> Categoria uno</li>
-         </a>
-         <a href="#">
-           <li> Categoria uno</li>
-         </a>
-         <a href="#">
-           <li> Categoria uno</li>
-         </a>
+        <?php } ?>
        </ul>
+       <select name="categories" id="">
+         <option value="Seleccionar">Categorias</option>
+         <option value="recientes">Recientes</option>
+         <?php foreach ($all_options as $option) { ?>
+         <option value="<?php echo $option->title; ?>"><?php echo $option->title; ?></option>
+         <?php } ?>
+       </select>
      </div>
    </div>
-   <div class="j-workspace">
+   <div class="j-workspace albums-grid">
      <div class="j-wrap">
+      <h2>Álbumes recientes</h2>
        <div class="grid">
          <!--  Album numero uno-->
          <div class="unit one-quarter album-unit">
@@ -142,6 +137,5 @@
        </div>
      </div>
    </div>
-  
 
 <?php include('./_foot.php'); ?>

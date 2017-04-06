@@ -1,0 +1,209 @@
+@charset "UTF-8";
+/* line 4, /Users/ErickLeos/Downloads/Archivopapá/assets/styles/_vars.scss */
+.k-color-primary {
+  color: #323232; }
+
+/* line 4, /Users/ErickLeos/Downloads/Archivopapá/assets/styles/_vars.scss */
+.k-bg-color-primary {
+  background-color: #323232; }
+
+/* line 5, /Users/ErickLeos/Downloads/Archivopapá/assets/styles/_vars.scss */
+.k-color-secondary {
+  color: #3ba1ae; }
+
+/* line 5, /Users/ErickLeos/Downloads/Archivopapá/assets/styles/_vars.scss */
+.k-bg-color-secondary {
+  background-color: #3ba1ae; }
+
+/* line 6, /Users/ErickLeos/Downloads/Archivopapá/assets/styles/_vars.scss */
+.k-color-inverse {
+  color: #fff; }
+
+/* line 6, /Users/ErickLeos/Downloads/Archivopapá/assets/styles/_vars.scss */
+.k-bg-color-inverse {
+  background-color: #fff; }
+
+/* line 7, /Users/ErickLeos/Downloads/Archivopapá/assets/styles/_vars.scss */
+.k-color-success {
+  color: #5CB85C; }
+
+/* line 7, /Users/ErickLeos/Downloads/Archivopapá/assets/styles/_vars.scss */
+.k-bg-color-success {
+  background-color: #5CB85C; }
+
+/* line 8, /Users/ErickLeos/Downloads/Archivopapá/assets/styles/_vars.scss */
+.k-color-info {
+  color: #5bc0de; }
+
+/* line 8, /Users/ErickLeos/Downloads/Archivopapá/assets/styles/_vars.scss */
+.k-bg-color-info {
+  background-color: #5bc0de; }
+
+/* line 9, /Users/ErickLeos/Downloads/Archivopapá/assets/styles/_vars.scss */
+.k-color-warning {
+  color: #F0AD4E; }
+
+/* line 9, /Users/ErickLeos/Downloads/Archivopapá/assets/styles/_vars.scss */
+.k-bg-color-warning {
+  background-color: #F0AD4E; }
+
+/* line 10, /Users/ErickLeos/Downloads/Archivopapá/assets/styles/_vars.scss */
+.k-color-danger {
+  color: #D9534F; }
+
+/* line 10, /Users/ErickLeos/Downloads/Archivopapá/assets/styles/_vars.scss */
+.k-bg-color-danger {
+  background-color: #D9534F; }
+
+/* line 13, /Users/ErickLeos/Downloads/Archivopapá/assets/styles/_vars.scss */
+.k-gray-base {
+  color: black; }
+
+/* line 13, /Users/ErickLeos/Downloads/Archivopapá/assets/styles/_vars.scss */
+.k-bg-gray-base {
+  background-color: black; }
+
+/* line 14, /Users/ErickLeos/Downloads/Archivopapá/assets/styles/_vars.scss */
+.k-gray-darker {
+  color: #262626; }
+
+/* line 14, /Users/ErickLeos/Downloads/Archivopapá/assets/styles/_vars.scss */
+.k-bg-gray-darker {
+  background-color: #262626; }
+
+/* line 15, /Users/ErickLeos/Downloads/Archivopapá/assets/styles/_vars.scss */
+.k-gray-dark {
+  color: #595959; }
+
+/* line 15, /Users/ErickLeos/Downloads/Archivopapá/assets/styles/_vars.scss */
+.k-bg-gray-dark {
+  background-color: #595959; }
+
+/* line 16, /Users/ErickLeos/Downloads/Archivopapá/assets/styles/_vars.scss */
+.k-gray-regular {
+  color: gray; }
+
+/* line 16, /Users/ErickLeos/Downloads/Archivopapá/assets/styles/_vars.scss */
+.k-bg-gray-regular {
+  background-color: gray; }
+
+/* line 17, /Users/ErickLeos/Downloads/Archivopapá/assets/styles/_vars.scss */
+.k-gray-light {
+  color: #a6a6a6; }
+
+/* line 17, /Users/ErickLeos/Downloads/Archivopapá/assets/styles/_vars.scss */
+.k-bg-gray-light {
+  background-color: #a6a6a6; }
+
+/* line 18, /Users/ErickLeos/Downloads/Archivopapá/assets/styles/_vars.scss */
+.k-gray-lighter {
+  color: #d9d9d9; }
+
+/* line 18, /Users/ErickLeos/Downloads/Archivopapá/assets/styles/_vars.scss */
+.k-bg-gray-lighter {
+  background-color: #d9d9d9; }
+
+/* line 19, /Users/ErickLeos/Downloads/Archivopapá/assets/styles/_vars.scss */
+.k-gray-ghost {
+  color: #e6e6e6; }
+
+/* line 19, /Users/ErickLeos/Downloads/Archivopapá/assets/styles/_vars.scss */
+.k-bg-gray-ghost {
+  background-color: #e6e6e6; }
+
+/* line 27, /Users/ErickLeos/Downloads/Archivopapá/assets/styles/_vars.scss */
+.k-vs-50p {
+  margin-bottom: 50px; }
+
+/* line 28, /Users/ErickLeos/Downloads/Archivopapá/assets/styles/_vars.scss */
+.k-vs-25p {
+  margin-bottom: 25px; }
+
+/* line 50, /Users/ErickLeos/Downloads/Archivopapá/assets/styles/_vars.scss */
+*, *:after, *:before {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+/* line 51, /Users/ErickLeos/Downloads/Archivopapá/assets/styles/_vars.scss */
+.clearfix:before, .clearfix:after {
+  content: '';
+  display: table; }
+
+/* line 52, /Users/ErickLeos/Downloads/Archivopapá/assets/styles/_vars.scss */
+.clearfix:after {
+  clear: both; }
+
+/* line 54, /Users/ErickLeos/Downloads/Archivopapá/assets/styles/_vars.scss */
+html, body {
+  height: 100%; }
+
+/* line 58, /Users/ErickLeos/Downloads/Archivopapá/assets/styles/_vars.scss */
+body {
+  font-family: "Raleway", sans-serif;
+  font-size: 18px;
+  line-height: 1;
+  background-color: #ffffff;
+  min-height: 500px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  word-break: break-word;
+  font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: antialiased; }
+
+/* line 73, /Users/ErickLeos/Downloads/Archivopapá/assets/styles/_vars.scss */
+ul.k-list, ol.k-list {
+  padding: 0;
+  margin: 0;
+  list-style: none; }
+
+/* line 80, /Users/ErickLeos/Downloads/Archivopapá/assets/styles/_vars.scss */
+h1, h2, h3, h4, h5, h6, p, figure, ul, li {
+  margin: 0;
+  padding: 0; }
+
+/* line 84, /Users/ErickLeos/Downloads/Archivopapá/assets/styles/_vars.scss */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Raleway", sans-serif;
+  color: #323232; }
+  /* line 87, /Users/ErickLeos/Downloads/Archivopapá/assets/styles/_vars.scss */
+  h1::first-letter, h2::first-letter, h3::first-letter, h4::first-letter, h5::first-letter, h6::first-letter {
+    color: #3ba1ae; }
+
+/* line 92, /Users/ErickLeos/Downloads/Archivopapá/assets/styles/_vars.scss */
+a {
+  -webkit-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+  text-decoration: none; }
+
+/* line 98, /Users/ErickLeos/Downloads/Archivopapá/assets/styles/_vars.scss */
+p {
+  color: #323232;
+  line-height: 1.33333; }
+
+/* line 105, /Users/ErickLeos/Downloads/Archivopapá/assets/styles/_vars.scss */
+.k-img-absolute {
+  display: block;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  right: 0;
+  margin: auto; }
+
+/* line 115, /Users/ErickLeos/Downloads/Archivopapá/assets/styles/_vars.scss */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0; }
+
+/* line 126, /Users/ErickLeos/Downloads/Archivopapá/assets/styles/_vars.scss */
+img {
+  max-width: 100%; }
+
+/*# sourceMappingURL=_vars.css.map */

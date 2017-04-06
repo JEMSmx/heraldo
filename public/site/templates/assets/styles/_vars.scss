@@ -2,7 +2,7 @@
 $white: #ffffff;
 $black: #000000;
 $color-primary:   #323232;  .k-color-primary   { color: $color-primary;   };  .k-bg-color-primary   { background-color: $color-primary;   }
-$color-secondary: #2e7e88;  .k-color-secondary { color: $color-secondary; };  .k-bg-color-secondary { background-color: $color-secondary; }
+$color-secondary: #3ba1ae;  .k-color-secondary { color: $color-secondary; };  .k-bg-color-secondary { background-color: $color-secondary; }
 $color-inverse:   #fff;     .k-color-inverse   { color: $color-inverse;   };  .k-bg-color-inverse   { background-color: $color-inverse;   }
 $color-success:   #5CB85C;  .k-color-success   { color: $color-success;   };  .k-bg-color-success   { background-color: $color-success;   }
 $color-info:      #5bc0de;  .k-color-info      { color: $color-info;      };  .k-bg-color-info      { background-color: $color-info;      }
@@ -63,6 +63,10 @@ body {
   min-height: 500px;
 	overflow-x: hidden;
 	overflow-y: scroll;
+  word-break: break-word;
+  font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: antialiased;
 }
 
 ul, ol {
@@ -77,10 +81,12 @@ h1, h2, h3, h4, h5, h6, p, figure, ul, li {
   margin: 0;
   padding: 0;
 }
-
 h1, h2, h3, h4, h5, h6 {
-    font-family: $headings-font-family;
-    color: $color-primary;
+  font-family: $headings-font-family;
+  color: $color-primary;
+  &::first-letter {
+    color: $color-secondary;
+  }
 }
 
 a {
