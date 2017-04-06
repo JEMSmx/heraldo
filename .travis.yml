@@ -19,17 +19,13 @@ language: node_js
 node_js:
   - "5.1"
 before_deploy:
-  - 'git config --global user.email "deploy@travis"'
-  - 'git config --global user.name "[Deploy]"'
   - "wget -O /tmp/git-ftp https://gist.githubusercontent.com/memiux/f4f36ff274bd827aac573520242dea8a/raw/git-ftp && chmod +x /tmp/git-ftp"
   - export GIT_FTP_URL_BRANCH=GIT_FTP_URL_$TRAVIS_BRANCH
   - '/tmp/git-ftp add-scope $TRAVIS_BRANCH "${!GIT_FTP_URL_BRANCH}"'
   - git config git-ftp.syncroot public
   - npm install -g uglify-js
   - gem install sass -v 3.4.22 --no-ri --no-rdoc
-  - /tmp/git-ftp catchup -s $TRAVIS_BRANCH -v
   - ./public/site/templates/koi.sh -p -f
-  - git commit -m deploy *.php
 deploy:
   - provider: script
     script: /tmp/git-ftp push -s $TRAVIS_BRANCH -v
