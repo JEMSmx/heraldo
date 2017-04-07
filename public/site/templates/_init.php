@@ -13,7 +13,13 @@
 
 include_once("./_func.php");
 
-if ($page->template == "home" && $input->urlSegment) {
-  require("./{$input->urlSegment}.php");
-  exit;
+
+$pos = strpos($input->urlSegment, "categoria");
+if($page->template == "home" && $pos===false){
+	if ($page->template == "home" && $input->urlSegment) {
+	  require("./{$input->urlSegment}.php");
+	  exit;
+	}
 }
+
+

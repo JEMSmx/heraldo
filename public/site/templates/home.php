@@ -27,6 +27,8 @@
       <h2>Álbumes recientes</h2>
        <div class="grid">
          <!--  Album numero uno-->
+        <?php $albumes=$pages->find("template=album, sort=-published"); 
+              foreach ($albumes as $album) { ?>             
          <div class="unit one-quarter album-unit">
            <div class="image-album">
              <div class="image-album-overlay">
@@ -41,99 +43,10 @@
                 </a>
              </div>
            </div>
-           <h3>Titulo del album</h3>
-           <p>2 de marzo del 2017</p>
+           <h3><?php echo $album->title; ?></h3>
+           <p><?php echo strftime("%d %B %G", $album->created); ?></p>
          </div>
-         <!--  Album numero uno-->
-         <div class="unit one-quarter album-unit">
-           <div class="image-album">
-             <div class="image-album-overlay">
-                <a href="#">
-                  <p>Ver</p>
-                </a>
-                <a href="#">
-                  <p>Descargar</p>
-                </a>
-                <a href="#">
-                  <p>Modificar</p>
-                </a>
-             </div>
-           </div>
-           <h3>Titulo del album</h3>
-           <p>2 de marzo del 2017</p>
-         </div>
-         <!--  Album numero uno-->
-         <div class="unit one-quarter album-unit">
-           <div class="image-album">
-             <div class="image-album-overlay">
-                <a href="#">
-                  <p>Ver</p>
-                </a>
-                <a href="#">
-                  <p>Descargar</p>
-                </a>
-                <a href="#">
-                  <p>Modificar</p>
-                </a>
-             </div>
-           </div>
-           <h3>Titulo del album</h3>
-           <p>2 de marzo del 2017</p>
-         </div>
-         <!--  Album numero uno-->
-         <div class="unit one-quarter album-unit">
-           <div class="image-album">
-             <div class="image-album-overlay">
-                <a href="#">
-                  <p>Ver</p>
-                </a>
-                <a href="#">
-                  <p>Descargar</p>
-                </a>
-                <a href="#">
-                  <p>Modificar</p>
-                </a>
-             </div>
-           </div>
-           <h3>Titulo del album</h3>
-           <p>2 de marzo del 2017</p>
-         </div>
-         <!--  Album numero uno-->
-         <div class="unit one-quarter album-unit">
-           <div class="image-album">
-             <div class="image-album-overlay">
-                <a href="#">
-                  <p>Ver</p>
-                </a>
-                <a href="#">
-                  <p>Descargar</p>
-                </a>
-                <a href="#">
-                  <p>Modificar</p>
-                </a>
-             </div>
-           </div>
-           <h3>Titulo del album</h3>
-           <p>2 de marzo del 2017</p>
-         </div>
-         <!--  Album numero uno-->
-         <div class="unit one-quarter album-unit">
-           <div class="image-album">
-             <div class="image-album-overlay">
-                <a href="#">
-                  <p>Ver</p>
-                </a>
-                <a href="#">
-                  <p>Descargar</p>
-                </a>
-                <a href="#">
-                  <p>Modificar</p>
-                </a>
-             </div>
-           </div>
-           <h3>Titulo del album</h3>
-           <p>2 de marzo del 2017</p>
-         </div>
+         <?php } ?>
        </div>
      </div>
    </div>
