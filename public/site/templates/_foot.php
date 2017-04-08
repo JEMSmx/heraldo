@@ -1,5 +1,6 @@
-<script src="<?php echo $config->urls->templates; ?>static/455375-147357/scripts/main.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.0.47/jquery.fancybox.min.js"></script>
+  <script src="<?php echo $config->urls->templates; ?>static/455375-147357/scripts/main.min.js"></script>
   <script>
     (function() {
         var morphSearch = document.getElementById( 'morphsearch' ),
