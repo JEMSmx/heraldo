@@ -40,22 +40,25 @@
       <h2>Álbumes recientes</h2>
        <div class="grid">
         <div class="contenedor">
-         <!--  Album numero uno-->
         <?php if(!empty($find_category))
                   $albumes=$pages->find("template=album, sort=-published, category=".$option_url.", start=".$ini.", limit=".$pagination);
               else
                   $albumes=$pages->find("template=album, sort=-published, start=".$ini.", limit=".$pagination);
                foreach ($albumes as $key=>$album) { 
                 $image_album = $album->images->first();
-                if($image_album)
-                    $img_album = $image_album->size(480, 480, array('quality' => 90, 'upscaling' => true, 'cropping' => false)); ?>           
+                if($image_album){
+                  $img_album = $image_album->size(480, 480, array('quality' => 90, 'upscaling' => true, 'cropping' => false));
+                  $img_album_2x = $image_album->size(1200, 1200, array('quality' => 90, 'upscaling' => true, 'cropping' => false));
+                }
+                     ?>           
          <div class="unit one-quarter album-unit">
            <div class="image-album" <?php if($image_album) {?>style="background-image:url('<?php echo $img_album->url; ?>'); <?php } ?>">
              <div class="image-album-overlay">
-                <a data-fancybox="gallery<?php echo $cur.$key ?>" href="<?php echo $img_album->url; ?>">
+                <a data-fancybox="gallery<?php echo $cur.$key ?>" href="<?php echo $img_album_2x->url; ?>">
                   <p>Ver</p>
                 </a>
-                <a href="#">
+                <a onclick="dAlbum('<?php echo $album->id; ?>'); return false;" id="download-album" href="">
+                  <input type="hidden" id="chk-<?php echo $album->id ?>" name="checksum" value="<?php echo k::encrypt($album->id.'/'.$album->title.':'.time()); ?>">
                   <p>Descargar</p>
                 </a>
                 <a href="#">
@@ -71,7 +74,18 @@
            <?php } ?>
            </div>
            <h3><?php echo $album->title; ?></h3>
-           <p><?php echo strftime("%d %B %G", $album->created); ?></p>
+           <?php $datos = exif_read_data($image_album->httpUrl);
+                 $fecha=$datos['DateTimeOriginal'];
+                  if($fecha==NULL){
+                    $fecha=date('Y:m:d');
+                  }
+                  $fecha=str_replace(' ',':',$fecha);
+                  $separarfecha=explode(":", $fecha);
+                  $dia=$separarfecha[2];
+                  $num=$separarfecha[1]-1;
+                  $meses = array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
+                  $anio=$separarfecha[0]; ?>
+           <p><?php echo $dia.' '.$meses[$num].' '.$anio; ?></p>
          </div>
          <?php } ?>
          </div>
@@ -101,6 +115,10 @@ var pagina=1;
         }
       });                              
   }
+  function dAlbum(idAlbum){
+    window.location="descarga?checksum="+$("#chk-"+idAlbum).val();;
+  }
+  
 $('[data-fancybox]').fancybox({
   image : {
     protect: true

@@ -19,12 +19,12 @@
    <aside class="sidebar clearfix">
       <nav>
         <div class="dropdown">
-          <a href="#">Usuario <img src="<?php echo $config->urls->templates; ?>static/455375-147357/images/down-chevron.svg" alt=""></a>
+          <a href="#"><?php echo $user->namefull ?><img src="<?php echo $config->urls->templates; ?>static/455375-147357/images/down-chevron.svg" alt=""></a>
           <ul>
             <a href="#"><li>Subir</li></a>
             <a href="#"><li>Administrar</li></a>
             <a href="#"><li>Usuario nuevo</li></a>
-            <a href="#"><li>Cerrar sesión</li></a>
+            <a href="<?php echo $config->urls->root."logout?redirect=".$page->id; ?>"><li>Cerrar sesión</li></a>
           </ul>
         </div>
       </nav>

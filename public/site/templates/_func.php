@@ -19,6 +19,18 @@ class k {
     return "";
   }
 
+  public static function encrypt($q) {
+    $cryptKey  = 'z6!Qg2y<\2;bZ,HEN}y[t!$6}!64E';
+    $qEncoded      = base64_encode( mcrypt_encrypt( MCRYPT_RIJNDAEL_256, md5( $cryptKey ), $q, MCRYPT_MODE_CBC, md5( md5( $cryptKey ) ) ) );
+    return( $qEncoded );
+  }
+
+  public static function decrypt($q) {
+      $cryptKey  = 'z6!Qg2y<\2;bZ,HEN}y[t!$6}!64E';
+      $qDecoded      = rtrim( mcrypt_decrypt( MCRYPT_RIJNDAEL_256, md5( $cryptKey ), base64_decode( $q ), MCRYPT_MODE_CBC, md5( md5( $cryptKey ) ) ), "\0");
+      return( $qDecoded );
+  }
+
   /**
    * Given a group of pages render a tree of navigation
    *
