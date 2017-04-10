@@ -65,7 +65,7 @@ class k {
     $page->setOutputFormatting(false);
     foreach ($page->images as $image) {
         $image->description = $data['ImageDescription'];
-        if(!empty($iptc))
+        if(!empty($iptc) && isset($iptc['2#025']))
           $image->tags=implode(",", $iptc['2#025']);  
         $image->copyright = isset($data['Copyright']) ? $data['Copyright']:'';
         $image->make = isset($data['Model']) ? $data['Model']:'';
