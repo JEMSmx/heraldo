@@ -63,58 +63,32 @@
             </a>
           </div>
           <div class="dummy-column">
-            <h2>Popular</h2>
-            <a class="dummy-media-object" href="http://tympanus.net/codrops/2014/08/05/page-preloading-effect/">
-              <img src="https://dummyimage.com/50x50/000/fff" alt="PagePreloadingEffect"/>
-              <h3>Page Preloading Effect</h3>
-            </a>
-            <a class="dummy-media-object" href="http://tympanus.net/codrops/2014/05/28/arrow-navigation-styles/">
-              <img src="https://dummyimage.com/50x50/000/fff" alt="ArrowNavigationStyles"/>
-              <h3>Arrow Navigation Styles</h3>
-            </a>
-            <a class="dummy-media-object" href="http://tympanus.net/codrops/2014/06/19/ideas-for-subtle-hover-effects/">
-              <img src="https://dummyimage.com/50x50/000/fff" alt="HoverEffectsIdeasNew"/>
-              <h3>Ideas for Subtle Hover Effects</h3>
-            </a>
-            <a class="dummy-media-object" href="http://tympanus.net/codrops/2014/07/14/freebie-halcyon-days-one-page-website-template/">
-              <img src="https://dummyimage.com/50x50/000/fff" alt="FreebieHalcyonDays"/>
-              <h3>Halcyon Days Template</h3>
-            </a>
-            <a class="dummy-media-object" href="http://tympanus.net/codrops/2014/05/22/inspiration-for-article-intro-effects/">
-              <img src="https://dummyimage.com/50x50/000/fff" alt="ArticleIntroEffects"/>
-              <h3>Inspiration for Article Intro Effects</h3>
-            </a>
-            <a class="dummy-media-object" href="http://tympanus.net/codrops/2014/06/26/draggable-dual-view-slideshow/">
-              <img src="https://dummyimage.com/50x50/000/fff" alt="DraggableDualViewSlideshow"/>
-              <h3>Draggable Dual-View Slideshow</h3>
-            </a>
+            <h2>Eventos</h2>
+            <?php $albumes=$pages->find("template=album, sort=random");
+              foreach ($albumes as $album) { 
+                 $image_album = $album->images->first();
+                if($image_album){
+                  $img_album = $image_album->size(100, 100, array('quality' => 90, 'upscaling' => false, 'cropping' => true));
+                } ?>
+                <a class="dummy-media-object" href="#">
+                <img src="<?php echo $img_album->url; ?>" alt="<?php echo $image_album->title; ?>"/>
+                <h3><?php echo $album->title; ?></h3>
+              </a>
+              <?php } ?>
           </div>
           <div class="dummy-column">
-            <h2>Recent</h2>
-            <a class="dummy-media-object" href="http://tympanus.net/codrops/2014/10/07/tooltip-styles-inspiration/">
-              <img src="https://dummyimage.com/50x50/000/fff" alt="TooltipStylesInspiration"/>
-              <h3>Tooltip Styles Inspiration</h3>
-            </a>
-            <a class="dummy-media-object" href="http://tympanus.net/codrops/2014/09/23/animated-background-headers/">
-              <img src="https://dummyimage.com/50x50/000/fff" alt="AnimatedHeaderBackgrounds"/>
-              <h3>Animated Background Headers</h3>
-            </a>
-            <a class="dummy-media-object" href="http://tympanus.net/codrops/2014/09/16/off-canvas-menu-effects/">
-              <img src="https://dummyimage.com/50x50/000/fff" alt="OffCanvas"/>
-              <h3>Off-Canvas Menu Effects</h3>
-            </a>
-            <a class="dummy-media-object" href="http://tympanus.net/codrops/2014/09/02/tab-styles-inspiration/">
-              <img src="https://dummyimage.com/50x50/000/fff" alt="TabStyles"/>
-              <h3>Tab Styles Inspiration</h3>
-            </a>
-            <a class="dummy-media-object" href="http://tympanus.net/codrops/2014/08/19/making-svgs-responsive-with-css/">
-              <img src="https://dummyimage.com/50x50/000/fff" alt="ResponsiveSVGs"/>
-              <h3>Make SVGs Responsive with CSS</h3>
-            </a>
-            <a class="dummy-media-object" href="http://tympanus.net/codrops/2014/07/23/notification-styles-inspiration/">
-              <img src="https://dummyimage.com/50x50/000/fff" alt="NotificationStyles"/>
-              <h3>Notification Styles Inspiration</h3>
-            </a>
+            <h2>Eventos Recientes</h2>
+            <?php $albumes=$pages->find("template=album, sort=-published");
+              foreach ($albumes as $album) { 
+                 $image_album = $album->images->first();
+                if($image_album){
+                  $img_album = $image_album->size(100, 100, array('quality' => 90, 'upscaling' => false, 'cropping' => true));
+                } ?>
+                <a class="dummy-media-object" href="#">
+                <img src="<?php echo $img_album->url; ?>" alt="<?php echo $image_album->title; ?>"/>
+                <h3><?php echo $album->title; ?></h3>
+              </a>
+              <?php } ?>
           </div>
         </div><!-- /morphsearch-content -->
         <span class="morphsearch-close"></span>

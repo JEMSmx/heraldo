@@ -65,28 +65,24 @@
                   <p>Modificar</p>
                 </a>
              </div>
-            <?php $inc=0; 
-            foreach ($album->images as $image) { 
-              $inc++; 
-              if($inc==1) continue;
-              $img = $image->size(1200, 1200, array('quality' => 90, 'upscaling' => true, 'cropping' => false)); ?>
-              <a data-fancybox="gallery<?php echo $cur.$key ?>" href="<?php echo $img->url; ?>"></a>
-           <?php } ?>
            </div>
            <h3><?php echo $album->title; ?></h3>
            <?php $datos = exif_read_data($image_album->httpUrl);
-                 $fecha=$datos['DateTimeOriginal'];
-                  if($fecha==NULL){
-                    $fecha=date('Y:m:d');
-                  }
-                  $fecha=str_replace(' ',':',$fecha);
-                  $separarfecha=explode(":", $fecha);
-                  $dia=$separarfecha[2];
-                  $num=$separarfecha[1]-1;
-                  $meses = array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
-                  $anio=$separarfecha[0]; ?>
-           <p><?php echo $dia.' '.$meses[$num].' '.$anio; ?></p>
+                 $image_path=$image_album->httpUrl;
+                 $size = getimagesize ($image_path, $info);
+                 $iptc = isset($info['APP13']) ? iptcparse($info["APP13"]):null;
+                 if($album->metadata==0)
+                    k::add_attributes($album->id,$iptc,$datos); ?>               
+           <p><?php echo $image_album->dateoriginal; ?></p>    
          </div>
+         <?php $inc=0; 
+            foreach ($album->images as $image) { 
+              $inc++; 
+              if($inc==1) continue;
+              $img = $image->size(1200, 1200, array('quality' => 90, 'upscaling' => true, 'cropping' => false));                  
+               ?>
+              <a data-fancybox="gallery<?php echo $cur.$key ?>" href="<?php echo $img->url; ?>"></a>
+           <?php } ?>
          <?php } ?>
          </div>
        </div>
