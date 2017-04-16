@@ -61,7 +61,7 @@
                   <input type="hidden" id="chk-<?php echo $album->id ?>" name="checksum" value="<?php echo k::encrypt($album->id.'/'.$album->title.':'.time()); ?>">
                   <p>Descargar</p>
                 </a>
-                <a href="#">
+                <a href="<?php echo $config->urls->admin ?>page/edit/?id=<?php echo $album->id; ?>">
                   <p>Modificar</p>
                 </a>
              </div>
@@ -114,7 +114,7 @@ var pagina=1;
   function dAlbum(idAlbum){
     window.location="descarga?checksum="+$("#chk-"+idAlbum).val();;
   }
-  
+   
 $('[data-fancybox]').fancybox({
   image : {
     protect: true

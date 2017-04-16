@@ -21,9 +21,9 @@
         <div class="dropdown">
           <a href="#"><?php echo $user->namefull ?><img src="<?php echo $config->urls->templates; ?>static/455375-147357/images/down-chevron.svg" alt=""></a>
           <ul>
-            <a href="#"><li>Subir</li></a>
-            <a href="#"><li>Administrar</li></a>
-            <a href="#"><li>Usuario nuevo</li></a>
+            <a href="<?php echo $config->urls->admin ?>page/add/?parent_id=1014"><li>Subir</li></a>
+            <a href="<?php echo $config->urls->admin ?>page/"><li>Administrar</li></a>
+            <a href="<?php echo $config->urls->admin ?>access/users/add/"><li>Usuario nuevo</li></a>
             <a href="<?php echo $config->urls->root."logout?redirect=".$page->id; ?>"><li>Cerrar sesión</li></a>
           </ul>
         </div>
@@ -34,63 +34,48 @@
           <input class="morphsearch-input" type="search" placeholder="Buscar..."/>
           <button class="morphsearch-submit" type="submit"></button>
         </form>
-        <div class="morphsearch-content">
-          <div class="dummy-column">
-            <h2>People</h2>
-            <a class="dummy-media-object" href="http://twitter.com/SaraSoueidan">
-              <img class="round" src="http://0.gravatar.com/avatar/81b58502541f9445253f30497e53c280?s=50&d=identicon&r=G" alt="Sara Soueidan"/>
-              <h3>Sara Soueidan</h3>
-            </a>
-            <a class="dummy-media-object" href="http://twitter.com/rachsmithtweets">
-              <img class="round" src="http://0.gravatar.com/avatar/48959f453dffdb6236f4b33eb8e9f4b7?s=50&d=identicon&r=G" alt="Rachel Smith"/>
-              <h3>Rachel Smith</h3>
-            </a>
-            <a class="dummy-media-object" href="http://www.twitter.com/peterfinlan">
-              <img class="round" src="http://0.gravatar.com/avatar/06458359cb9e370d7c15bf6329e5facb?s=50&d=identicon&r=G" alt="Peter Finlan"/>
-              <h3>Peter Finlan</h3>
-            </a>
-            <a class="dummy-media-object" href="http://www.twitter.com/pcridesagain">
-              <img class="round" src="http://1.gravatar.com/avatar/db7700c89ae12f7d98827642b30c879f?s=50&d=identicon&r=G" alt="Patrick Cox"/>
-              <h3>Patrick Cox</h3>
-            </a>
-            <a class="dummy-media-object" href="https://twitter.com/twholman">
-              <img class="round" src="http://0.gravatar.com/avatar/cb947f0ebdde8d0f973741b366a51ed6?s=50&d=identicon&r=G" alt="Tim Holman"/>
-              <h3>Tim Holman</h3>
-            </a>
-            <a class="dummy-media-object" href="https://twitter.com/shaund0na">
-              <img class="round" src="http://1.gravatar.com/avatar/9bc7250110c667cd35c0826059b81b75?s=50&d=identicon&r=G" alt="Shaun Dona"/>
-              <h3>Shaun Dona</h3>
-            </a>
-          </div>
-          <div class="dummy-column">
-            <h2>Eventos</h2>
-            <?php $albumes=$pages->find("template=album, sort=random");
-              foreach ($albumes as $album) { 
-                 $image_album = $album->images->first();
-                if($image_album){
-                  $img_album = $image_album->size(100, 100, array('quality' => 90, 'upscaling' => false, 'cropping' => true));
-                } ?>
-                <a class="dummy-media-object" href="#">
-                <img src="<?php echo $img_album->url; ?>" alt="<?php echo $image_album->title; ?>"/>
-                <h3><?php echo $album->title; ?></h3>
-              </a>
+        <div id="display">
+          <div class="morphsearch-content">
+            <div class="dummy-column">
+              <h2>Fotógrafos</h2>
+              <?php $users=$pages->find("template=user, roles=photographer");
+                foreach ($users as $user) { ?> 
+                  <a class="dummy-media-object" href="#">
+                    <img class="round" src="<?php echo ($user->photoProfile) ? $user->photoProfile->url:$config->urls->templates.'static/455375-147357/images/profile.png'; ?>" alt="Sara Soueidan"/>
+                    <h3><?php echo $user->namefull; ?></h3>
+                  </a>
               <?php } ?>
-          </div>
-          <div class="dummy-column">
-            <h2>Eventos Recientes</h2>
-            <?php $albumes=$pages->find("template=album, sort=-published");
-              foreach ($albumes as $album) { 
-                 $image_album = $album->images->first();
-                if($image_album){
-                  $img_album = $image_album->size(100, 100, array('quality' => 90, 'upscaling' => false, 'cropping' => true));
-                } ?>
-                <a class="dummy-media-object" href="#">
-                <img src="<?php echo $img_album->url; ?>" alt="<?php echo $image_album->title; ?>"/>
-                <h3><?php echo $album->title; ?></h3>
-              </a>
-              <?php } ?>
-          </div>
-        </div><!-- /morphsearch-content -->
+            </div>
+            <div class="dummy-column">
+              <h2>Eventos</h2>
+              <?php $albumes=$pages->find("template=album, sort=random");
+                foreach ($albumes as $album) { 
+                   $image_album = $album->images->first();
+                  if($image_album){
+                    $img_album = $image_album->size(100, 100, array('quality' => 90, 'upscaling' => false, 'cropping' => true));
+                  } ?>
+                  <a class="dummy-media-object" href="#">
+                  <img src="<?php echo $img_album->url; ?>" alt="<?php echo $image_album->title; ?>"/>
+                  <h3><?php echo $album->title; ?></h3>
+                </a>
+                <?php } ?>
+            </div>
+            <div class="dummy-column">
+              <h2>Eventos Recientes</h2>
+              <?php $albumes=$pages->find("template=album, sort=-published");
+                foreach ($albumes as $album) { 
+                   $image_album = $album->images->first();
+                  if($image_album){
+                    $img_album = $image_album->size(100, 100, array('quality' => 90, 'upscaling' => false, 'cropping' => true));
+                  } ?>
+                  <a class="dummy-media-object" href="#">
+                  <img src="<?php echo $img_album->url; ?>" alt="<?php echo $image_album->title; ?>"/>
+                  <h3><?php echo $album->title; ?></h3>
+                </a>
+                <?php } ?>
+            </div>
+          </div><!-- /morphsearch-content -->
+        </div>
         <span class="morphsearch-close"></span>
       </div><!-- /morphsearch -->
     <div class="overlay"></div>

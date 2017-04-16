@@ -2,6 +2,25 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.0.47/jquery.fancybox.min.js"></script>
   <script src="<?php echo $config->urls->templates; ?>static/455375-147357/scripts/main.min.js"></script>
   <script>
+  $(document).ready(function(){
+  $(".morphsearch-input").keyup(function() {
+    var texto = $(this).val();
+    var dataString = 'palabra='+ texto;
+      $.ajax({
+      type: "POST",
+      url: "buscar",
+      data: dataString,
+      cache: false,
+        success: function(data){
+          if(data){
+            console.log(data);
+            $("#display").html(data).show();
+          }
+        }
+      });
+    return false;    
+  });
+});
     (function() {
         var morphSearch = document.getElementById( 'morphsearch' ),
           input = morphSearch.querySelector( 'input.morphsearch-input' ),
