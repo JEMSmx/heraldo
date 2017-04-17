@@ -1005,7 +1005,7 @@ $config->logs = array(
  * @var string
  *
  */
-$config->defaultAdminTheme = 'AdminThemeDefault';
+$config->defaultAdminTheme = 'AdminThemeReno';
 
 /**
  * Admin email address
