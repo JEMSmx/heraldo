@@ -13,17 +13,20 @@
   <link rel="apple-touch-icon" href="https://dummyimage.com/50x50/000/fff">
   <link rel="shortcut icon" href="https://dummyimage.com/50x50/000/fff">
 </head>
-
 <body>
   <div class="container">
    <aside class="sidebar clearfix">
       <nav>
         <div class="dropdown">
-          <a href="#"><?php echo $user->namefull ?><img src="<?php echo $config->urls->templates; ?>static/455375-147357/images/down-chevron.svg" alt=""></a>
+          <a href="<?php echo $config->urls->admin ?>profile/"><?php echo $user->namefull ?><img src="<?php echo $config->urls->templates; ?>static/455375-147357/images/down-chevron.svg" alt=""></a>
           <ul>
             <a href="<?php echo $config->urls->admin ?>page/add/?parent_id=1014"><li>Subir</li></a>
+            <?php if($user->hasRole('administrator') || $user->hasRole('superuser') || $user->hasRole('manager') || $user->hasRole('consultant')){ ?> 
             <a href="<?php echo $config->urls->admin ?>page/"><li>Administrar</li></a>
-            <a href="<?php echo $config->urls->admin ?>access/users/add/"><li>Usuario nuevo</li></a>
+            <?php } ?> 
+            <?php if($user->hasRole('administrator') || $user->hasRole('superuser')){ ?> 
+              <a href="<?php echo $config->urls->admin ?>access/users/add/"><li>Usuario nuevo</li></a>
+            <?php } ?>
             <a href="<?php echo $config->urls->root."logout?redirect=".$page->id; ?>"><li>Cerrar sesión</li></a>
           </ul>
         </div>
@@ -39,10 +42,10 @@
             <div class="dummy-column">
               <h2>Fotógrafos</h2>
               <?php $users=$pages->find("template=user, roles=photographer");
-                foreach ($users as $user) { ?> 
+                foreach ($users as $user_b) { ?> 
                   <a class="dummy-media-object" href="#">
-                    <img class="round" src="<?php echo ($user->photoProfile) ? $user->photoProfile->url:$config->urls->templates.'static/455375-147357/images/profile.png'; ?>" alt="Sara Soueidan"/>
-                    <h3><?php echo $user->namefull; ?></h3>
+                    <img src="<?php echo ($user_b->photoProfile) ? $user_b->photoProfile->url:$config->urls->templates.'static/455375-147357/images/profile.png'; ?>" alt="Sara Soueidan"/>
+                    <h3><?php echo $user_b->namefull; ?></h3>
                   </a>
               <?php } ?>
             </div>
@@ -82,9 +85,11 @@
   </div><!-- /container -->
    <div class="j-workspace">
      <div class="j-wrap">
+     <a href="<?php echo $config->urls->root; ?>">
        <header>
           <img src="<?php echo $config->urls->templates; ?>static/455375-147357/images/jems-color.svg" alt="">
          <h1>Archivo digital</h1>
        </header>
+      </a>
      </div>
    </div>

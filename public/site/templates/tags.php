@@ -44,13 +44,13 @@ foreach($parray as $p) {
                 <a data-fancybox="gallery<?php echo $cur.$key ?>" href="<?php echo $img_album_2x->url; ?>">
                   <p>Ver</p>
                 </a>
-                <?php if($user->roles=='administrator' || $user->roles=='superuser' || $user->roles=='manager'){ ?> 
+                <?php if($user->hasRole('administrator') || $user->hasRole('superuser') || $user->hasRole('manager')){ ?> 
                   <a onclick="dAlbum('<?php echo $album->id; ?>'); return false;" id="download-album" href="">
                     <input type="hidden" id="chk-<?php echo $album->id ?>" name="checksum" value="<?php echo k::encrypt($album->id.'/'.$album->title.':'.time()); ?>">
                     <p>Descargar</p>
                   </a>
                 <?php } ?> 
-                <?php if($album->createdUser == $user->name){ ?> 
+                <?php if($user->hasRole('administrator') || $user->hasRole('superuser') || $album->createdUser == $user){ ?> 
                   <a href="<?php echo $config->urls->admin ?>page/edit/?id=<?php echo $album->id; ?>">
                     <p>Modificar</p>
                   </a>
