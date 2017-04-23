@@ -6,9 +6,9 @@
     $pagination=20;
     $cur = $input->pageNum;
     if(!empty($find_category))
-      $max = intval(($pages->find("template=album, category=".$option_url)->getTotal()) / $pagination);
+      $max = intval(($pages->find("template=template=evento, category=".$option_url)->getTotal()) / $pagination);
     else
-      $max = intval(($pages->find("template=album")->getTotal()) / $pagination);
+      $max = intval(($pages->find("template=evento")->getTotal()) / $pagination);
     $next = $cur<$max ? $cur + 1 : false;
     $prev = $cur>1 ? $cur - 1 : false;
     $ini = $cur==1 ? 0 : ($cur-1)*$pagination;
@@ -41,9 +41,9 @@
        <div class="grid">
         <div class="contenedor">
         <?php if(!empty($find_category))
-                  $albumes=$pages->find("template=album, sort=-published, category=".$option_url.", start=".$ini.", limit=".$pagination);
+                  $albumes=$pages->find("template=evento, sort=-published, category=".$option_url.", start=".$ini.", limit=".$pagination);
               else
-                  $albumes=$pages->find("template=album, sort=-published, start=".$ini.", limit=".$pagination);
+                  $albumes=$pages->find("template=evento, sort=-published, start=".$ini.", limit=".$pagination);
                foreach ($albumes as $key=>$album) { 
                 $image_album = $album->images->first();
                 if($image_album){
@@ -70,7 +70,9 @@
                 <?php } ?>
              </div>
            </div>
-           <h3><?php echo $album->title; ?></h3>
+           <a href="<?php echo $album->url; ?>">
+            <h3><?php echo $album->title; ?></h3>
+           </a>
            <?php $datos = exif_read_data($image_album->httpUrl);
                  $image_path=$image_album->httpUrl;
                  $size = getimagesize ($image_path, $info);
@@ -118,7 +120,6 @@ var pagina=1;
   function dAlbum(idAlbum){
     window.location="descarga?checksum="+$("#chk-"+idAlbum).val();;
   }
-   
 $('[data-fancybox]').fancybox({
   image : {
     protect: true

@@ -51,7 +51,7 @@
             </div>
             <div class="dummy-column">
               <h2>Eventos</h2>
-              <?php $albumes=$pages->find("template=album, sort=random");
+              <?php $albumes=$pages->find("template=evento, sort=random");
                 foreach ($albumes as $album) { 
                    $image_album = $album->images->first();
                   if($image_album){
@@ -65,7 +65,7 @@
             </div>
             <div class="dummy-column">
               <h2>Eventos Recientes</h2>
-              <?php $albumes=$pages->find("template=album, sort=-published");
+              <?php $albumes=$pages->find("template=evento, sort=-published");
                 foreach ($albumes as $album) { 
                    $image_album = $album->images->first();
                   if($image_album){
