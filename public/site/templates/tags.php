@@ -1,20 +1,18 @@
 <?php include('./_head.php');
 $alltags = array(); 
 $use_urlsegments = false;
-$parray = $pages->find("template=album, images.tags!=''");
+$parray = $pages->find("template=evento, images.tags!=''");
 foreach($parray as $p) {
     $images = $p->images->find("tags!=''");
     foreach($images as $im) {
         $tags = $im->tags;
-        if(strpos($tags, ',') !== false) $tags = str_replace(',', ' ', $tags);
-        if(strpos($tags, '|') !== false) $tags = str_replace('|', ' ', $tags);
-        $tags = explode(' ', $tags);
-
+        $tags = explode(',', $tags);
         foreach($tags as $tag) {
             $alltags[$sanitizer->pageName($tag, Sanitizer::translate)] = $tag;
         }
     }
-} if(empty($input->urlSegment1) && empty($input->get->tag)) exit; 
+} 
+if(empty($input->urlSegment1) && empty($input->get->tag)) exit; 
               if($input->urlSegment1) {
                   $tagvalue = strtolower($input->urlSegment1);
                   $tagvalue = $alltags[$tagvalue];
@@ -22,7 +20,6 @@ foreach($parray as $p) {
               if($input->get->tag) {
                   $tagvalue = $sanitizer->selectorValue(strtolower($input->get->tag));
               }  ?>
- 
    <div class="j-workspace albums-grid">
      <div class="j-wrap">
       <h2>Álbumes etiqueta: <strong><?php echo $tagvalue; ?></strong></h2>
@@ -57,7 +54,9 @@ foreach($parray as $p) {
                 <?php } ?>
              </div>
            </div>
-           <h3><?php echo $album->title; ?></h3>
+           <a href="<?php echo $album->url; ?>">
+            <h3><?php echo $album->title; ?></h3>
+           </a>
            <?php $datos = exif_read_data($image_album->httpUrl);
                  $image_path=$image_album->httpUrl;
                  $size = getimagesize ($image_path, $info);
