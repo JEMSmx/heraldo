@@ -1,0 +1,16 @@
+.photo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  a {
+    color: $color-secondary;
+    &:hover {
+      color: darken($color-secondary, 10);
+      text-decoration: underline;
+    }
+  }
+  h1,h2,h3,p {
+    margin-bottom: 8px;
+  }
+}
