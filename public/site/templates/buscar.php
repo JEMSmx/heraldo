@@ -15,7 +15,7 @@
         foreach ($allImages as $img) { 
             $img_ind = $img->width(100, array('quality' => 90, 'upscaling' => false, 'cropping' => true)); ?>
             <a class="dummy-media-object" href="#">
-                <img class="round" src="<?php echo $img_ind->url; ?>"/>
+                <img src="<?php echo $img_ind->url; ?>"/>
                 <h3><?php $name=explode(".", $img->basename); echo $name[0]; ?></h3>
             </a>
         <?php } ?>
@@ -56,7 +56,7 @@
             }
         } 
         foreach(array_slice(array_unique($alltags), 0, 20) as $key => $tag) { ?>
-        <a class="dummy-media-object" href="<?php echo $config->urls->root; ?>tags/<?php echo (strpos($tag, " ") === false) ? $tag:str_replace(" ", "-", $tag); ?>">
+        <a class="dummy-media-object" href="<?php echo $config->urls->root; ?>etiquetas/<?php echo (strpos($tag, " ") === false) ? $tag:str_replace(" ", "-", $tag); ?>">
           <img src="<?php echo $config->urls->templates; ?>static/455375-147357/images/tag.png" alt="<?php echo $tag ?>"/>
           <h3><?php echo $tag; ?></h3>
         </a>
@@ -65,7 +65,7 @@
         if(count($alltags<=20)){
             $extratags=array_unique($extratags);
             foreach(array_slice($extratags, 0, (20-count($alltags))) as $tag) { ?>
-            <a class="dummy-media-object" href="<?php echo $config->urls->root; ?>tags/<?php echo (strpos($tag, " ") === false) ? $tag:str_replace(" ", "-", $tag); ?>">
+            <a class="dummy-media-object" href="<?php echo $config->urls->root; ?>etiquetas<?php echo (strpos($tag, " ") === false) ? $tag:str_replace(" ", "-", $tag); ?>">
               <img src="<?php echo $config->urls->templates; ?>static/455375-147357/images/tag.png" alt="<?php echo $tag ?>"/>
               <h3><?php echo $tag ?></h3>
           </a>

@@ -56,7 +56,7 @@
                 foreach ($etiquetas as $number=>$etiqueta) {  
                   $number++;
                   $etiqueta_url=(strpos($etiqueta, " ") === false) ? $etiqueta:str_replace(" ", "-", $etiqueta);
-                  echo (count($etiquetas)==$number) ? '<a target="_top" href="'.$config->urls->root.'tags/'.strtolower($etiqueta_url).'">'.$etiqueta.'</a>':'<a target="_top" href="'.$config->urls->root.'tags/'.strtolower($etiqueta_url).'">'.$etiqueta.'</a>, '; 
+                  echo (count($etiquetas)==$number) ? '<a target="_top" href="'.$config->urls->root.'etiquetas/'.strtolower($etiqueta_url).'">'.$etiqueta.'</a>':'<a target="_top" href="'.$config->urls->root.'etiquetas/'.strtolower($etiqueta_url).'">'.$etiqueta.'</a>, '; 
                 } ?>
           </p>
         <?php } ?>

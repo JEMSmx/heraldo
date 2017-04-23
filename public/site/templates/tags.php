@@ -8,6 +8,7 @@ foreach($parray as $p) {
         $tags = $im->tags;
         $tags = explode(',', $tags);
         foreach($tags as $tag) {
+            $tag=strtolower($tag);
             $alltags[$sanitizer->pageName($tag, Sanitizer::translate)] = $tag;
         }
     }
