@@ -3,7 +3,7 @@
       foreach ($page->images as $image) {
          $inc++;
          if($inc==$input->get->image){
-           $img = $image->size(600, 400, array('quality' => 90, 'upscaling' => true, 'cropping' => false));
+           $img = $image->width(600, array('quality' => 90, 'upscaling' => true, 'cropping' => false));
            break;
          }
        } ?>

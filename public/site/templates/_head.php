@@ -55,7 +55,7 @@
                 foreach ($albumes as $album) { 
                    $image_album = $album->images->first();
                   if($image_album){
-                    $img_album = $image_album->size(100, 100, array('quality' => 90, 'upscaling' => false, 'cropping' => true));
+                    $img_album = $image_album->width(100, array('quality' => 90, 'upscaling' => false, 'cropping' => true));
                   } ?>
                   <a class="dummy-media-object" href="#">
                   <img src="<?php echo $img_album->url; ?>" alt="<?php echo $image_album->title; ?>"/>
@@ -69,7 +69,7 @@
                 foreach ($albumes as $album) { 
                    $image_album = $album->images->first();
                   if($image_album){
-                    $img_album = $image_album->size(100, 100, array('quality' => 90, 'upscaling' => false, 'cropping' => true));
+                    $img_album = $image_album->width(100, array('quality' => 90, 'upscaling' => false, 'cropping' => true));
                   } ?>
                   <a class="dummy-media-object" href="#">
                   <img src="<?php echo $img_album->url; ?>" alt="<?php echo $image_album->title; ?>"/>

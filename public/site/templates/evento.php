@@ -28,8 +28,8 @@
        <div class="grid">
         <?php $id=0; foreach ($page->images as $image) { 
                 $id++;
-                $img = $image->size(480, 480, array('quality' => 90, 'upscaling' => true, 'cropping' => false));
-                $img_2x = $image->size(1200, 1200, array('quality' => 90, 'upscaling' => true, 'cropping' => false)); ?> 
+                $img = $image->width(480, array('quality' => 90, 'upscaling' => true, 'cropping' => false));
+                $img_2x = $image->width(1200, array('quality' => 90, 'upscaling' => true, 'cropping' => false)); ?> 
          <div class="unit one-quarter album-unit">
            <div class="image-album" <?php if($img) {?>style="background-image:url('<?php echo $img->url; ?>'); <?php } ?>">
              <div class="image-album-overlay">

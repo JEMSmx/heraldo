@@ -21,8 +21,8 @@ else
 foreach ($albumes as $key=>$album) { 
   $image_album = $album->images->first();
   if($image_album){
-    $img_album = $image_album->size(480, 480, array('quality' => 90, 'upscaling' => true, 'cropping' => false));
-    $img_album_2x = $image_album->size(1200, 1200, array('quality' => 90, 'upscaling' => true, 'cropping' => false));
+    $img_album = $image_album->width(480, array('quality' => 90, 'upscaling' => true, 'cropping' => false));
+    $img_album_2x = $image_album->width(1200, array('quality' => 90, 'upscaling' => true, 'cropping' => false));
   }
   ?>           
   <div class="unit one-quarter album-unit">
@@ -59,7 +59,7 @@ foreach ($albumes as $key=>$album) {
 foreach ($album->images as $image) { 
   $inc++; 
   if($inc==1) continue;
-  $img = $image->size(1200, 1200, array('quality' => 90, 'upscaling' => true, 'cropping' => false));                  
+  $img = $image->width(1200, array('quality' => 90, 'upscaling' => true, 'cropping' => false));                  
   ?>
   <a data-fancybox="gallery<?php echo $cur.$key ?>" href="<?php echo $img->url; ?>"></a>
   <?php } ?>
