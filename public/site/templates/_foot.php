@@ -8,12 +8,11 @@
     var dataString = 'palabra='+ texto;
       $.ajax({
       type: "POST",
-      url: "buscar",
+      url: "<?php echo $config->urls->root.'buscar'; ?>",
       data: dataString,
       cache: false,
         success: function(data){
           if(data){
-            console.log(data);
             $("#display").html(data).show();
           }
         }
@@ -66,8 +65,6 @@
             toggleSearch(ev);
           }
         } );
-
-
         /***** for demo purposes only: don't allow to submit the form *****/
         morphSearch.querySelector( 'button[type="submit"]' ).addEventListener( 'click', function(ev) { ev.preventDefault(); } );
       })();
