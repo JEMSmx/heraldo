@@ -21,12 +21,11 @@ else
 foreach ($albumes as $key=>$album) { 
   $image_album = $album->images->first();
   if($image_album){
-    $img_album = $image_album->width(480, array('quality' => 90, 'upscaling' => true, 'cropping' => false));
     $img_album_2x = $image_album->width(1200, array('quality' => 90, 'upscaling' => true, 'cropping' => false));
   }
   ?>           
   <div class="unit one-quarter album-unit">
-   <div class="image-album" <?php if($image_album) {?>style="background-image:url('<?php echo $img_album->url; ?>'); <?php } ?>">
+   <div class="image-album" <?php if($image_album) {?>style="background-image:url('<?php echo $img_album_2x->url; ?>'); <?php } ?>">
      <div class="image-album-overlay">
       <a data-fancybox="gallery<?php echo $cur.$key ?>" href="<?php echo $img_album_2x->url; ?>">
         <p>Ver</p>

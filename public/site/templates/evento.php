@@ -28,10 +28,9 @@
        <div class="grid">
         <?php $id=0; foreach ($page->images as $image) { 
                 $id++;
-                $img = $image->width(480, array('quality' => 90, 'upscaling' => true, 'cropping' => false));
                 $img_2x = $image->width(1200, array('quality' => 90, 'upscaling' => true, 'cropping' => false)); ?> 
          <div class="unit one-quarter album-unit">
-           <div class="image-album" <?php if($img) {?>style="background-image:url('<?php echo $img->url; ?>'); <?php } ?>">
+           <div class="image-album" <?php if($img) {?>style="background-image:url('<?php echo $img_2x->url; ?>'); <?php } ?>">
              <div class="image-album-overlay">
                 <a href="<?php echo $img_2x->url; ?>" data-fancybox>
                   <p>Ver</p>
