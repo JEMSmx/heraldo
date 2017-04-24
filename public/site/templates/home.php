@@ -6,7 +6,7 @@
     $pagination=20;
     $cur = $input->pageNum;
     if(!empty($find_category))
-      $max = intval(($pages->find("template=template=evento, category=".$option_url)->getTotal()) / $pagination);
+      $max = intval(($pages->find("template=evento, category=".$option_url)->getTotal()) / $pagination);
     else
       $max = intval(($pages->find("template=evento")->getTotal()) / $pagination);
     $next = $cur<$max ? $cur + 1 : false;
@@ -25,6 +25,9 @@
            <li><?php echo $option->title; ?></li>
          </a>
         <?php } ?>
+        <a href="<?php echo $config->urls->root; ?>videos">
+           <li>Videos</li>
+         </a>
        </ul>
        <select name="categories" id="categories">
          <option value="Seleccionar">Categorias</option>
