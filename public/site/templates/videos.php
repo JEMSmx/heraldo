@@ -53,7 +53,7 @@
          <div class="unit one-quarter album-unit">
            <div class="video-album" style="background-image:url('<?php echo $video->poster; ?>');">
              <div class="video-album-overlay">
-                <a href="<?php echo $config->urls->root.'player?video='.$video->url ?>" data-fancybox>
+                <a href="<?php echo $config->urls->root.'player?video='.$album->id?>" data-fancybox>
                   <p>Ver</p>
                 </a>
                 <a href="#">
