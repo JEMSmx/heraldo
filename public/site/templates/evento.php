@@ -48,8 +48,9 @@
                 <?php } ?>
              </div>
            </div>
-           <a data-fancybox data-src="<?php echo $config->urls->root;?>foto?page=<?php echo $page->id.'&image='.$id;?>" href="javascript:;">
-           <h3><?php $name=explode(".", $image->basename); echo $name[0]; ?></h3>
+           <?php $name=explode(".", $image->basename); ?>
+           <a data-fancybox data-src="<?php echo $config->urls->root;?>foto?page=<?php echo $page->id.'&image='.$name[0].'&ext='.$name[1]; ?>" href="javascript:;">
+           <h3><?php echo $name[0]; ?></h3>
            </a>
          </div>
         <?php } ?> 

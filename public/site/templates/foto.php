@@ -1,12 +1,8 @@
 <?php $page=$pages->get($input->get->page);
-      $inc=0;
-      foreach ($page->images as $image) {
-         $inc++;
-         if($inc==$input->get->image){
-           $img = $image->size(600, 400, array('quality' => 90, 'upscaling' => true, 'cropping' => false));
-           break;
-         }
-       } ?>
+          $im=$input->get->image.'.'.$input->get->ext;
+          $image = $page->images->get("name=$im");
+          $img = $image->size(600, 400, array('quality' => 90, 'upscaling' => true, 'cropping' => false));
+      ?>
 <!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
@@ -66,7 +62,7 @@
       </div>
      </div>
    </div>
-<?php include('./_foot.php'); ?>
+ <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 <script type="text/javascript">
   function dFoto(){
     window.location="<?php echo $config->urls->root;?>"+"individual?checksum="+$("#chk").val();;

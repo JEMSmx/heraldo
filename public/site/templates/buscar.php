@@ -13,8 +13,9 @@
             foreach($p->images as $image) $allImages[] = $image; 
         } 
         foreach ($allImages as $img) { 
+            $name=explode(".", $img->basename); 
             $img_ind = $img->width(100, array('quality' => 90, 'upscaling' => false, 'cropping' => true)); ?>
-            <a class="dummy-media-object" href="#">
+            <a class="dummy-media-object" data-fancybox data-src="<?php echo $config->urls->root;?>foto?page=<?php echo $img->get('page').'&image='.$name[0].'&ext='.$name[1];?>" href="javascript:;" >
                 <img src="<?php echo $img_ind->url; ?>"/>
                 <h3><?php $name=explode(".", $img->basename); echo $name[0]; ?></h3>
             </a>
@@ -65,7 +66,7 @@
         if(count($alltags<=20)){
             $extratags=array_unique($extratags);
             foreach(array_slice($extratags, 0, (20-count($alltags))) as $tag) { ?>
-            <a class="dummy-media-object" href="<?php echo $config->urls->root; ?>etiquetas<?php echo (strpos($tag, " ") === false) ? $tag:str_replace(" ", "-", $tag); ?>">
+            <a class="dummy-media-object" href="<?php echo $config->urls->root; ?>etiquetas/<?php echo (strpos($tag, " ") === false) ? $tag:str_replace(" ", "-", $tag); ?>">
               <img src="<?php echo $config->urls->templates; ?>static/455375-147357/images/tag.png" alt="<?php echo $tag ?>"/>
               <h3><?php echo $tag ?></h3>
           </a>

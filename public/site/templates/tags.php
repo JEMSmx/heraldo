@@ -17,7 +17,7 @@ $cur = $input->pageNum;
 if(empty($input->urlSegment1) && empty($input->get->tag)) exit; 
               if($input->urlSegment1) {
                   $tagvalue = strtolower($input->urlSegment1);
-                  if(!in_array($tagvalue, $alltags)) $session->redirect("/"); 
+                  if(!in_array(str_replace("-", " ", $tagvalue), $alltags)) $session->redirect("/"); 
                   $tagvalue = $alltags[$tagvalue];
               }
               if($input->get->tag) {
