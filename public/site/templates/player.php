@@ -11,11 +11,11 @@
 </head>
 <?php $page=$pages->get($input->get->video);
       $video=$page->videos->first(); ?>
-<video id="playerId" src='<?php echo $video->url ?>' width='100%' height='100%' controls autoplay></video> 
+<video style="width: 100%; height: 100%;" id="player1" src='<?php echo $video->url ?>' controls autoplay></video> 
  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.0.6/mediaelementplayer.min.js"></script>
 <script type="text/javascript">
-    var player = new MediaElementPlayer('playerId', {
-      features: ['playpause','progress'],
-    });
+  jQuery(document).ready(function($) {
+    $('#player1').mediaelementplayer();
+  });
 </script>
