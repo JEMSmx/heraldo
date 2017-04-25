@@ -68,6 +68,14 @@
         /***** for demo purposes only: don't allow to submit the form *****/
         morphSearch.querySelector( 'button[type="submit"]' ).addEventListener( 'click', function(ev) { ev.preventDefault(); } );
       })();
+    $('#categories').change(function() {
+      if($(this).val()=='recientes')
+        window.location = "<?php echo $config->urls->root; ?>";
+      else if($(this).val()=='videos')
+        window.location = "<?php echo $config->urls->root; ?>videos";
+      else
+        window.location = "<?php echo $config->urls->root; ?>categoria/"+$(this).val();
+    });
   </script>
 </body>
 </html>

@@ -35,6 +35,7 @@
          <?php foreach ($all_options as $option) { ?>
          <option value="<?php echo $option->value; ?>"><?php echo $option->title; ?></option>
          <?php } ?>
+         <option value="videos">Videos</option>
        </select>
      </div>
    </div>

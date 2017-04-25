@@ -12,6 +12,9 @@
            <li><?php echo $option->title; ?></li>
          </a>
         <?php } ?>
+        <a href="<?php echo $config->urls->root; ?>videos">
+           <li>Videos</li>
+         </a>
        </ul>
        <select name="categories" id="categories">
          <option value="Seleccionar">Categorias</option>
@@ -19,6 +22,7 @@
          <?php foreach ($all_options as $option) { ?>
          <option value="<?php echo $option->value; ?>"><?php echo $option->title; ?></option>
          <?php } ?>
+         <option value="videos">Videos</option>
        </select>
      </div>
    </div>
