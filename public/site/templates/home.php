@@ -43,7 +43,6 @@
      <div class="j-wrap">
       <h2>Álbumes recientes</h2>
        <div class="grid">
-        <div class="contenedor">
         <?php if(!empty($find_category))
                   $albumes=$pages->find("template=evento, sort=-published, category=".$option_url.", start=".$ini.", limit=".$pagination);
               else
@@ -93,7 +92,6 @@
               <a data-fancybox="gallery<?php echo $cur.$key ?>" href="<?php echo $img->url; ?>"></a>
            <?php } ?>
          <?php } ?>
-         </div>
        </div>
      </div>
    </div>
@@ -116,7 +114,7 @@ var pagina=1;
     $.get("datos?pagina="+pagina+"&categoria="<?php echo $find_category; ?>,
       function(data){
         if (data != "") {
-          $(".contenedor:last").after(data); 
+          $(".grid:last").after(data); 
         }
       });                              
   }
