@@ -72,7 +72,7 @@
       if($(this).val()=='recientes')
         window.location = "<?php echo $config->urls->root; ?>";
       else if($(this).val()=='videos')
-        window.location = "<?php echo $config->urls->root; ?>videos";
+        window.location = "<?php echo $config->urls->root; ?>videos/";
       else
         window.location = "<?php echo $config->urls->root; ?>categoria/"+$(this).val();
     });

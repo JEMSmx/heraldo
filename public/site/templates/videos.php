@@ -43,7 +43,6 @@
      <div class="j-wrap">
       <h2>Videos</h2>
        <div class="grid">
-        <div class="contenedor">
         <?php if(!empty($find_category))
                   $albumes=$pages->find("template=video, sort=-published, category=".$option_url.", start=".$ini.", limit=".$pagination);
               else
@@ -70,7 +69,6 @@
            <p><?php echo strftime("%d %B %G", $album->created); ?></p>
          </div>
          <?php } ?>
-         </div>
        </div>
      </div>
    </div>
@@ -95,6 +93,6 @@ $(document).ready(function(){
     <?php foreach ($albumes as $key=>$album) { ?>
     getThumb('<?php echo $album->id; ?>');
   <?php } ?>  
-    }, 500);
+    }, 1000);
 });
 </script>

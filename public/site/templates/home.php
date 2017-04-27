@@ -97,12 +97,6 @@
    </div>
 <?php include('./_foot.php'); ?>
 <script type="text/javascript">
-$('#categories').change(function() {
-  if($(this).val()=='recientes')
-    window.location = "<?php echo $config->urls->root; ?>";
-  else
-    window.location = "<?php echo $config->urls->root; ?>categoria/"+$(this).val();
-});
 var pagina=1;
   $(window).scroll(function(){
     if ($(window).scrollTop() == $(document).height() - $(window).height()){

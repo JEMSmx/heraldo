@@ -64,12 +64,6 @@
    
 <?php include('./_foot.php'); ?>
 <script type="text/javascript">
-$('#categories').change(function() {
-  if($(this).val()=='recientes')
-    window.location = "<?php echo $config->urls->root; ?>";
-  else
-    window.location = "<?php echo $config->urls->root; ?>categoria/"+$(this).val();
-});
   function dFoto(idFoto){
     window.location="<?php echo $config->urls->root;?>"+"individual?checksum="+$("#chk-"+idFoto).val();;
   } 
