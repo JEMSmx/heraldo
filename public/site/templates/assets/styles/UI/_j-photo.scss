@@ -1,7 +1,7 @@
 .photo {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   height: 100%;
   a {
     color: $color-secondary;

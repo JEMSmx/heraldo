@@ -537,7 +537,7 @@ input[type="search"] {
 .photo {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   height: 100%; }
   .photo a {
     color: #3ba1ae; }
