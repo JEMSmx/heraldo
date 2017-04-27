@@ -1,44 +1,13 @@
-<?php include('./_head.php');
-    $field = $fields->get('category');
-    $all_options = $field->type->getOptions($field);
+<?php require_once ('./_mobile-detect.php'); $detect = new Mobile_Detect;
+    $page=$pages->get($input->get->current);
     $pagination=20;
-    $cur = $input->pageNum;
+    $cur = $input->get->pagina;
     $max = (count($page->images)) / $pagination;
     $next = $cur<$max ? $cur + 1 : false;
     $prev = $cur>1 ? $cur - 1 : false;
     $ini = $cur==1 ? 0 : ($cur-1)*$pagination;
     if($cur-1>$max) $session->redirect("/");
-    ?>
-<div class="j-workspace">
-     <div class="j-wrap sub-categories-container">
-       <ul class="sub-categories">
-       <a href="<?php echo $config->urls->root; ?>">
-           <li>Recientes</li>
-         </a>
-       <?php foreach ($all_options as $option) { ?>
-        <a href="<?php echo $config->urls->root; ?>categoria/<?php echo $option->value; ?>">
-           <li><?php echo $option->title; ?></li>
-         </a>
-        <?php } ?>
-        <a href="<?php echo $config->urls->root; ?>videos">
-           <li>Videos</li>
-         </a>
-       </ul>
-       <select name="categories" id="categories">
-         <option value="Seleccionar">Categorias</option>
-         <option value="recientes">Recientes</option>
-         <?php foreach ($all_options as $option) { ?>
-         <option value="<?php echo $option->value; ?>"><?php echo $option->title; ?></option>
-         <?php } ?>
-         <option value="videos">Videos</option>
-       </select>
-     </div>
-   </div>
-   <div class="j-workspace albums-grid">
-     <div class="j-wrap">
-      <h2><?php echo $page->category->title; ?> / Evento: <?php echo $page->title; ?></h2>
-       <div class="grid">
-        <?php $id=0; 
+   $id=$pagination*($cur-1); 
         $images=$page->images->slice($ini, ($pagination*$cur));
           foreach ($images as $image) { 
                 $id++;
@@ -67,32 +36,9 @@
            <h3><?php echo $name[0]; ?></h3>
            </a>
          </div>
-        <?php } ?> 
-       </div>
-     </div>
-   </div>
-   
-<?php include('./_foot.php'); ?>
+        <?php } ?>  
 <script type="text/javascript">
-var pagina=1;
-  $(window).scroll(function(){
-    if ($(window).scrollTop() == $(document).height() - $(window).height()){
-      pagina++;
-      cargardatos();
-    }                                       
-  });
-  function cargardatos(){ 
-    $.get("/datos-evento?pagina="+pagina+"&current=<?php echo $page->id; ?>",
-      function(data){
-        if (data != "") {
-          $(".album-unit:last").after(data); 
-        }
-      });                              
-  }
-  function dFoto(idFoto){
-    window.location="<?php echo $config->urls->root;?>"+"individual?checksum="+$("#chk-"+idFoto).val();;
-  } 
-$('[data-fancybox]').fancybox({
+  $('[data-fancybox]').fancybox({
   image : {
     protect: true
   },

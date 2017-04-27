@@ -1,4 +1,4 @@
-<?php 
+<?php require_once ('./_mobile-detect.php'); $detect = new Mobile_Detect;
 $find_category=$input->get->category;
 $field = $fields->get('category');
 $all_options = $field->type->getOptions($field);
