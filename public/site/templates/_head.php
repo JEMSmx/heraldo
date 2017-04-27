@@ -1,4 +1,5 @@
-<?php if(!$user->isLoggedin()) $session->redirect("/iniciar-sesion"); ?>
+<?php if(!$user->isLoggedin()) $session->redirect("/iniciar-sesion"); 
+require_once ('./_mobile-detect.php'); $detect = new Mobile_Detect; ?>
 <!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
