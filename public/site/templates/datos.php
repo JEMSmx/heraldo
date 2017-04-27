@@ -3,7 +3,7 @@ $find_category=$input->get->category;
 $field = $fields->get('category');
 $all_options = $field->type->getOptions($field);
 $option_url = $all_options->get("value=".$find_category);
-$pagination=20;
+$pagination=30;
 $cur = $input->get->pagina;
 if(!empty($find_category))
   $max = intval(($pages->find("template=evento, category=".$option_url)->getTotal()) / $pagination);

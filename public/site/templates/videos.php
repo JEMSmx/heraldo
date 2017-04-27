@@ -56,9 +56,12 @@
                 <a href="<?php echo $config->urls->root.'player?video='.$album->id?>" data-fancybox>
                   <p>Ver</p>
                 </a>
-                <a href="#">
-                  <p>Descargar</p>
-                </a>
+                <?php if($user->hasRole('administrator') || $user->hasRole('superuser') || $user->hasRole('manager')){ ?> 
+                  <a onclick="dVideo('<?php echo $album->id; ?>'); return false;" id="download-video" href="">
+                    <input type="hidden" id="chk-<?php echo $album->id ?>" name="checksum" value="<?php echo k::encrypt($video.'<>'.$video->filename.':'.time()); ?>">
+                    <p>Descargar</p>
+                  </a>
+                <?php } ?>
              </div>
              <video id="<?php echo $album->id; ?>" style="display: none">
              <source src="<?php echo $video->url; ?>" />
@@ -74,6 +77,9 @@
    </div>
 <?php include('./_foot.php'); ?>
 <script type="text/javascript">
+function dVideo(idVideo){
+    window.location="<?php echo $config->urls->root;?>"+"individual?checksum="+$("#chk-"+idVideo).val();;
+  } 
 function getThumb(IdVideo){
       var canvas = document.createElement('canvas');
       var video = document.getElementById(IdVideo);

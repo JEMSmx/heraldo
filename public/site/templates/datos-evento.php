@@ -1,6 +1,6 @@
 <?php require_once ('./_mobile-detect.php'); $detect = new Mobile_Detect;
     $page=$pages->get($input->get->current);
-    $pagination=20;
+    $pagination=30;
     $cur = $input->get->pagina;
     $max = (count($page->images)) / $pagination;
     $next = $cur<$max ? $cur + 1 : false;
