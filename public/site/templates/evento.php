@@ -39,7 +39,7 @@
       <h2><?php echo $page->category->title; ?> / Evento: <?php echo $page->title; ?></h2>
        <div class="grid">
         <?php $id=0; 
-        $images=$page->images->slice($ini, ($pagination*$cur));
+        $images=$page->images->find("start=$ini, limit=$pagination");
           foreach ($images as $image) { 
                 $id++;
                 $img_2x = $image->width(1200, array('quality' => 90, 'upscaling' => true, 'cropping' => false)); ?> 

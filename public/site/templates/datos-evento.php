@@ -6,9 +6,9 @@
     $next = $cur<$max ? $cur + 1 : false;
     $prev = $cur>1 ? $cur - 1 : false;
     $ini = $cur==1 ? 0 : ($cur-1)*$pagination;
-    if($cur-1>$max) $session->redirect("/");
+    if($cur-1>$max) exit;
    $id=$pagination*($cur-1); 
-        $images=$page->images->slice($ini, ($pagination*$cur));
+        $images=$page->images->find("start=$ini, limit=$pagination");
           foreach ($images as $image) { 
                 $id++;
                 $img_2x = $image->width(1200, array('quality' => 90, 'upscaling' => true, 'cropping' => false)); ?> 
