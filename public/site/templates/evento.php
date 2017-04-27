@@ -36,7 +36,7 @@
          <div class="unit one-quarter album-unit">
            <div class="image-album" <?php if($img_2x) {?>style="background-image:url('<?php echo $img_2x->url; ?>'); <?php } ?>">
              <div class="image-album-overlay">
-                <a href="<?php echo $img_2x->url; ?>" data-fancybox>
+                <a href="<?php echo $img_2x->url; ?>" data-fancybox="gallery" data-caption="<?php echo ($image->description) ? 'Descripción: '.$image->description:''; echo ($image->autor) ? '<br>Autor: '.$image->autor:''; echo ($image->dateoriginal) ? '<br>Fecha: '.$image->dateoriginal:''; if($image->city || $image->pais || $image->lugar) echo '<br>'; echo ($image->city) ? '  Ciudad: '.$image->city:''; echo ($image->pais) ? '  País: '.$image->pais:''; echo ($image->lugar) ? '  Lugar: '.$image->lugar:''; echo ($image->tags) ? '$'.$image->tags:''; ?>">
                   <p>Ver</p>
                 </a>
                 <?php if($user->hasRole('administrator') || $user->hasRole('superuser') || $user->hasRole('manager')){ ?> 
@@ -76,6 +76,28 @@ $('#categories').change(function() {
 $('[data-fancybox]').fancybox({
   image : {
     protect: true
+  },
+  iframe:{
+    scrolling: 'yes'
+  },
+  caption : function( instance, item ) {
+    var originalCaption, caption, link="Etiquetas: ", tags;
+    if (item.type === 'image') {
+      originalCaption=$(this).data('caption').split('$');
+      caption = originalCaption[0];
+      if(originalCaption[1]){
+        tags=originalCaption[1].split(',');
+        $.each(tags, function(key,value) {
+          if(key==(tags.length-1))
+            link+='<a href="/etiquetas/' + value.replace(" ","-") + '">'+value+'</a>';
+          else
+            link+='<a href="/etiquetas/' + value.replace(" ","-") + '">'+value+'</a>, ';
+        });
+        return (caption ? caption + '<br />' : '') + link;
+      }else{
+        return caption;
+      }
+    }
   }
 });
 </script>

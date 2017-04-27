@@ -95,6 +95,6 @@ $(document).ready(function(){
     <?php foreach ($albumes as $key=>$album) { ?>
     getThumb('<?php echo $album->id; ?>');
   <?php } ?>  
-    }, 250);
+    }, 500);
 });
 </script>

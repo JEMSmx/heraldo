@@ -17,12 +17,11 @@
   <link rel="apple-touch-icon" href="https://dummyimage.com/50x50/000/fff">
   <link rel="shortcut icon" href="https://dummyimage.com/50x50/000/fff">
 </head>
-
 <body>
   <!--  Categorias  -->
   <div class="j-workspace photo">
      <div class="j-wrap grid">
-      <div class="unit half album-unit">
+      <div class="unit half" style="text-align: center;">
         <img src="<?php echo $img->url; ?>" alt="<?php $name=explode(".", $image->basename); echo $name[0]; ?>">
       </div>
       <div class="unit half">

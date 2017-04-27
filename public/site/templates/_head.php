@@ -43,7 +43,7 @@
               <h2>Fotógrafos</h2>
               <?php $users=$pages->find("template=user, roles=photographer");
                 foreach ($users as $user_b) { ?> 
-                  <a class="dummy-media-object" href="#">
+                  <a class="dummy-media-object">
                     <img src="<?php echo ($user_b->photoProfile) ? $user_b->photoProfile->url:$config->urls->templates.'static/455375-147357/images/profile.png'; ?>" alt="Sara Soueidan"/>
                     <h3><?php echo $user_b->namefull; ?></h3>
                   </a>
@@ -57,7 +57,7 @@
                   if($image_album){
                     $img_album = $image_album->width(100, array('quality' => 90, 'upscaling' => false, 'cropping' => true));
                   } ?>
-                  <a class="dummy-media-object" href="#">
+                  <a class="dummy-media-object" href="<?php echo $album->url; ?>">
                   <img src="<?php echo $img_album->url; ?>" alt="<?php echo $image_album->title; ?>"/>
                   <h3><?php echo $album->title; ?></h3>
                 </a>
@@ -71,7 +71,7 @@
                   if($image_album){
                     $img_album = $image_album->width(100, array('quality' => 90, 'upscaling' => false, 'cropping' => true));
                   } ?>
-                  <a class="dummy-media-object" href="#">
+                  <a class="dummy-media-object" href="<?php echo $album->url; ?>">
                   <img src="<?php echo $img_album->url; ?>" alt="<?php echo $image_album->title; ?>"/>
                   <h3><?php echo $album->title; ?></h3>
                 </a>
