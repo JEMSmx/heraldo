@@ -60,10 +60,14 @@ class k {
       return( $qDecoded );
   }
 
-  public static function add_attributes($idpage, $iptc, $data){
+  public static function add_attributes($idpage){
     $page=wire('pages')->get($idpage);
     $page->setOutputFormatting(false);
     foreach ($page->images as $image) {
+          $datos = exif_read_data($image->httpUrl);
+          $image_path=$image->httpUrl;
+          $size = getimagesize ($image_path, $info);
+          $iptc = isset($info['APP13']) ? iptcparse($info["APP13"]):null;
         $image->description = $data['ImageDescription'];
         if(!empty($iptc) && isset($iptc['2#025']))
           $image->tags=implode(",", $iptc['2#025']);  
