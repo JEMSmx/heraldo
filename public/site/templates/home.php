@@ -76,7 +76,7 @@
             <h3><?php echo $album->title; ?></h3>
            </a>
            <?php  if($album->metadata==0)
-                    k::add_attributes($album->id,$iptc,$datos); ?>               
+                    k::add_attributes($album->id); ?>               
            <p><?php echo $image_album->dateoriginal; ?></p>    
          </div>
          <?php $inc=0; 

@@ -48,7 +48,7 @@ foreach ($albumes as $key=>$album) {
   </a>
   <?php 
   if($album->metadata==0)
-    k::add_attributes($album->id,$iptc,$datos); ?>               
+    k::add_attributes($album->id); ?>               
   <p><?php echo $image_album->dateoriginal; ?></p>    
 </div>
 <?php $inc=0; 
