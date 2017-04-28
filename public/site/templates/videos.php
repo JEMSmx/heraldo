@@ -48,10 +48,12 @@
               else
                   $albumes=$pages->find("template=video, sort=-published, start=".$ini.", limit=".$pagination);
                foreach ($albumes as $key=>$album) { 
-                $video=$album->videos->first(); ?>   
-               
-         <div class="unit one-quarter album-unit">
-           <div id="video-<?php echo $album->id; ?>" class="video-album" style="background-image: none;">
+                $video=$album->videos->first();
+                $thumb=$album->images->first();
+                if($thumb)
+                  $thumb_video=$thumb->width(240, array('quality' => 90, 'upscaling' => true, 'cropping' => false)); ?>
+          <div class="unit one-quarter album-unit">
+           <div id="video-<?php echo $album->id; ?>" class="video-album" <?php if($thumb){ ?> style="background-image:url('<?php echo $thumb_video->url; ?>');" <?php }else{ ?> style="background-image: none;" <?php } ?>>
              <div class="video-album-overlay">
                 <a href="<?php echo $config->urls->root.'player?video='.$album->id?>" data-fancybox>
                   <p>Ver</p>
@@ -63,11 +65,12 @@
                   </a>
                 <?php } ?>
              </div>
-             <video id="<?php echo $album->id; ?>" style="display: none">
+             <?php if(!$thumb){ ?>
+              <video id="<?php echo $album->id; ?>" style="display: none">
              <source src="<?php echo $video->url; ?>" />
              </video> 
+             <?php } ?>
            </div>
-
            <h3><?php echo $album->title; ?></h3>
            <p><?php echo strftime("%d %B %G", $album->created); ?></p>
          </div>
@@ -93,10 +96,16 @@ function getThumb(IdVideo){
       context.drawImage(video, 0, 0, w, h);
       var dataURI = canvas.toDataURL('image/jpeg');
       $('#video-'+IdVideo).css('background-image', 'url(' + dataURI + ')');
+      $.post("/load-foto",
+      {data: dataURI,video: IdVideo},
+      function(data, status){
+          console.log(data);
+      });
    }
 $(document).ready(function(){
     setTimeout(function() {
-    <?php foreach ($albumes as $key=>$album) { ?>
+    <?php foreach ($albumes as $key=>$album) {
+      if($album->images->first()) continue; ?>
     getThumb('<?php echo $album->id; ?>');
   <?php } ?>  
     }, 1000);
