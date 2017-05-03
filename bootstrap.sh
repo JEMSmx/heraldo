@@ -5,7 +5,7 @@ curl -fsSL https://github.com/memiux/cloud/tarball/master | tar --strip 1 -xzC $
 
 # printf "\n" | pecl install imagick
 # su vagrant -c 'cd /vagrant && composer.phar install'
-mysql -u root -p123 -e "CREATE DATABASE IF NOT EXISTS archivo_digital CHARACTER SET utf8 COLLATE utf8_general_ci;"
+mysql -u root -p123 -e "CREATE DATABASE IF NOT EXISTS heraldo CHARACTER SET utf8 COLLATE utf8_general_ci;"
 
 # /usr/local/sbin/php-fpm --nodaemonize
 # /usr/local/bin/httpd -D NO_DETACH
