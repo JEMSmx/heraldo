@@ -69,8 +69,11 @@ class k {
           $size = getimagesize ($image_path, $info);
           $iptc = isset($info['APP13']) ? iptcparse($info["APP13"]):null;
         $image->description = $data['ImageDescription'];
-        if(!empty($iptc) && isset($iptc['2#025']))
-          $image->tags=implode(",", $iptc['2#025']);  
+        if(!empty($iptc) && isset($iptc['2#025'])){
+          $tags_wi="";
+          $tags_wi=str_replace(" ", "", $iptc['2#025']);
+          $image->tags=implode(",", $tags_wi);  
+        } 
         $image->copyright = isset($data['Copyright']) ? $data['Copyright']:'';
         $image->make = isset($data['Model']) ? $data['Model']:'';
         $fecha= isset($data['DateTimeOriginal']) ? $data['DateTimeOriginal']:null;

@@ -5,7 +5,7 @@ $parray = $pages->find("template=evento, images.tags!=''");
 foreach($parray as $p) {
     $images = $p->images->find("tags!=''");
     foreach($images as $im) {
-        $tags = $im->tags;
+        $tags = str_replace(" ", "", k::quitaracentos($im->tags));
         $tags = explode(',', $tags);
         foreach($tags as $tag) {
             $tag=strtolower($tag);
@@ -39,16 +39,16 @@ if(empty($input->urlSegment1) && empty($input->get->tag)) exit;
          <div class="unit one-quarter album-unit">
            <div class="image-album" <?php if($image_album) {?>style="background-image:url('<?php echo $img_album_2x->url; ?>'); <?php } ?>">
              <div class="image-album-overlay">
-                <a data-fancybox="gallery<?php echo $cur.$key ?>" href="<?php echo $img_album_2x->url; ?>" <?php if(!$detect->isMobile() || $detect->isTablet()) { ?> data-caption="<?php echo ($image_album->description) ? 'Descripción: '.$image_album->description:''; echo ($image_album->autor) ? '<br>Autor: '.$image_album->autor:''; echo ($image_album->dateoriginal) ? '<br>Fecha: '.$image_album->dateoriginal:''; if($image_album->city || $image_album->pais || $image_album->lugar) echo '<br>'; echo ($image_album->city) ? '  Ciudad: '.$image_album->city:''; echo ($image_album->pais) ? '  País: '.$image_album->pais:''; echo ($image_album->lugar) ? ' Lugar: '.$image_album->lugar:''; echo ($image_album->tags) ? '$'.$image_album->tags:''; ?>" <?php } ?>">
+                <a data-fancybox="gallery<?php echo $cur.$key ?>" href="<?php echo $img_album_2x->url; ?>" <?php if(!$detect->isMobile() || $detect->isTablet()) { ?>  data-caption="<?php echo ($image_album->description) ? 'Descripción: '.$image_album->description:''; echo ($image_album->autor) ? '<br>Autor: '.$image_album->autor:''; echo ($image_album->dateoriginal) ? '<br>Fecha: '.$image_album->dateoriginal:''; if($image_album->city || $image_album->pais || $image_album->lugar) echo '<br>'; echo ($image_album->city) ? '  Ciudad: '.$image_album->city:''; echo ($image_album->pais) ? '  País: '.$image_album->pais:''; echo ($image_album->lugar) ? ' Lugar: '.$image_album->lugar:''; echo (str_replace(" ", "", k::quitaracentos($image_album->tags))) ? '$'.str_replace(" ", "", k::quitaracentos($image_album->tags)):''; ?>"" <?php } ?>>
                   <p>Ver</p>
                 </a>
-                <?php if($user->hasRole('administrator') || $user->hasRole('superuser') || $user->hasRole('manager')){ ?> 
+                <?php if($user->hasRole('administrator') || $user->hasRole('superuser') || $user->hasRole('admindoctos') || $user->hasRole('adminfotografo') || $user->hasRole('fotografo') || $user->hasRole('admindisenador') || $user->hasRole('disenador') || $user->hasRole('coeditor') || $user->hasRole('adminvideos') || $user->hasRole('editor')){ ?> 
                   <a onclick="dAlbum('<?php echo $album->id; ?>'); return false;" id="download-album" href="">
                     <input type="hidden" id="chk-<?php echo $album->id ?>" name="checksum" value="<?php echo k::encrypt($album->id.'/'.$album->title.':'.time()); ?>">
                     <p>Descargar</p>
                   </a>
                 <?php } ?> 
-                <?php if($user->hasRole('administrator') || $user->hasRole('superuser') || $album->createdUser == $user){ ?> 
+                <?php if($user->hasRole('administrator') || $user->hasRole('superuser') || $user->hasRole('adminfotografo') || $page->createdUser == $user){ ?> 
                   <a href="<?php echo $config->urls->admin ?>page/edit/?id=<?php echo $album->id; ?>">
                     <p>Modificar</p>
                   </a>
@@ -58,12 +58,8 @@ if(empty($input->urlSegment1) && empty($input->get->tag)) exit;
            <a href="<?php echo $album->url; ?>">
             <h3><?php echo $album->title; ?></h3>
            </a>
-           <?php $datos = exif_read_data($image_album->httpUrl);
-                 $image_path=$image_album->httpUrl;
-                 $size = getimagesize ($image_path, $info);
-                 $iptc = isset($info['APP13']) ? iptcparse($info["APP13"]):null;
-                 if($album->metadata==0)
-                    k::add_attributes($album->id,$iptc,$datos); ?>               
+           <?php  if($album->metadata==0)
+                    k::add_attributes($album->id); ?>               
            <p><?php echo $image_album->dateoriginal; ?></p>    
          </div>
          <?php $inc=0; 
@@ -72,7 +68,7 @@ if(empty($input->urlSegment1) && empty($input->get->tag)) exit;
               if($inc==1) continue;
               $img = $image->width(1200, array('quality' => 90, 'upscaling' => true, 'cropping' => false));                  
                ?>
-              <a data-fancybox="gallery<?php echo $cur.$key ?>" href="<?php echo $img->url; ?>" <?php if(!$detect->isMobile() || $detect->isTablet()) { ?> data-caption="<?php echo ($image->description) ? 'Descripción: '.$image->description:''; echo ($image->autor) ? '<br>Autor: '.$image->autor:''; echo ($image->dateoriginal) ? '<br>Fecha: '.$image->dateoriginal:''; if($image->city || $image->pais || $image->lugar) echo '<br>'; echo ($image->city) ? '  Ciudad: '.$image->city:''; echo ($image->pais) ? '  País: '.$image->pais:''; echo ($image->lugar) ? '  Lugar: '.$image->lugar:''; echo ($image->tags) ? '$'.$image->tags:'$'; ?>" <?php } ?> ></a>
+              <a data-fancybox="gallery<?php echo $cur.$key ?>" href="<?php echo $img->url; ?>" <?php if(!$detect->isMobile() || $detect->isTablet()) { ?> data-caption="<?php echo ($image->description) ? 'Descripción: '.$image->description:''; echo ($image->autor) ? '<br>Autor: '.$image->autor:''; echo ($image->dateoriginal) ? '<br>Fecha: '.$image->dateoriginal:''; if($image->city || $image->pais || $image->lugar) echo '<br>'; echo ($image->city) ? '  Ciudad: '.$image->city:''; echo ($image->pais) ? '  País: '.$image->pais:''; echo ($image->lugar) ? '  Lugar: '.$image->lugar:''; echo (str_replace(" ", "", k::quitaracentos($image->tags))) ? '$'.str_replace(" ", "", k::quitaracentos($image->tags)):'$'; ?>" <?php } ?> ></a>
            <?php } ?>
          <?php } }?>
        </div>
@@ -87,7 +83,17 @@ $('[data-fancybox]').fancybox({
   image : {
     protect: true
   },
-   <?php if(!$detect->isMobile() || $detect->isTablet()) { ?> 
+<?php if($user->hasRole('administrator') || $user->hasRole('superuser') || $user->hasRole('admindoctos') || $user->hasRole('adminfotografo') || $user->hasRole('fotografo') || $user->hasRole('admindisenador') || $user->hasRole('disenador') || $user->hasRole('coeditor') || $user->hasRole('adminvideos') || $user->hasRole('editor')){  ?>  
+  onInit : function(instance) {
+    instance.$refs.downloadButton = $('<a download class="fancybox-button fancybox-download"></a>')
+      .appendTo( instance.$refs.buttons );
+  },
+  beforeMove: function(instance, current) {
+    var image_original=current.src.replace(".1200x0","");
+    instance.$refs.downloadButton.attr('href', image_original);
+  },
+  <?php } 
+  if(!$detect->isMobile() || $detect->isTablet()) { ?> 
   caption : function( instance, item ) {
     var originalCaption, caption, link="Etiquetas: ", tags;
     if (item.type === 'image') {

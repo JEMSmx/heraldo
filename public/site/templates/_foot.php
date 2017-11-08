@@ -1,6 +1,7 @@
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.0.47/jquery.fancybox.min.js"></script>
-  <script src="<?php echo $config->urls->templates; ?>static/455375-147357/scripts/main.min.js"></script>
+  <script src="<?php echo $config->urls->templates; ?>static/455375-1493372430/scripts/main.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
   <script>
   $(document).ready(function(){
   $(".morphsearch-input").keyup(function() {
@@ -75,6 +76,24 @@
         window.location = "<?php echo $config->urls->root; ?>videos/";
       else
         window.location = "<?php echo $config->urls->root; ?>categoria/"+$(this).val();
+    });
+    $('#principalc').change(function() {
+      if($(this).val()!='seleccionar')
+        window.location = "<?php echo $config->urls->root; ?>"+$(this).val();
+    });
+    $('#subcategories').change(function() {
+      var father=$("#principalc option:selected").text().toLowerCase();
+      if(father=='fotos')
+        father='categoria';
+
+     if($(this).val()!='Seleccionar') 
+      window.location = "<?php echo $config->urls->root; ?>"+father+"/"+$(this).val();
+     else{
+        if(father=='categoria')
+          window.location = "<?php echo $config->urls->root; ?>";
+        else
+          window.location = "<?php echo $config->urls->root; ?>"+father;
+     }
     });
   </script>
 </body>

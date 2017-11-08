@@ -1,7 +1,7 @@
 <?php
 if(!$user->isLoggedin()) $session->redirect("/"); 
 
-if($user->hasRole('administrator') || $user->hasRole('superuser') || $user->hasRole('manager')){ 
+if(true){ 
 
 	$checksum=k::decrypt(str_replace(" ", "+", $input->get->checksum));
 

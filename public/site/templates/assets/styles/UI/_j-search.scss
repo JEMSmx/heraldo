@@ -1,9 +1,8 @@
 .sidebar {
-	max-width: 50%;
-	float: left;
+  max-width: 50%;
+  float: left;
   padding: 0 40px 0 0;
-	float: right;
-	min-height: 9em;
+  float: right;
   @media screen and (max-width: 970px){
     padding: 0;
     nav {
@@ -13,17 +12,18 @@
 }
 
 .sidebar > nav {
-	float: left;
-	font-size: 16px;
-	line-height: 1.75;
-	text-align: center;
-	margin: 0 250px 0 0;
+  float: left;
+  font-size: 16px;
+  line-height: 1.75;
+  text-align: center;
+  margin: 0 250px 0 0;
   .dropdown {
     margin-top: 8px;
     &:hover {
       ul {
         opacity: 1;
         display: block;
+        position: absolute;
       }
       a {
         img {
@@ -49,7 +49,7 @@
       list-style: none;
       text-align: right;
       padding: 8px;
-      background-color: rgba(0, 0, 0, 0.05);
+      background-color: rgb(249, 249, 249);
       opacity: .0;
       display: none;
       -webkit-transition: all 200ms ease-in-out;
@@ -164,8 +164,8 @@
 }
 
 input[type="search"] { /* reset normalize */
-	-webkit-box-sizing: border-box; 
-	box-sizing: border-box;	
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 .morphsearch-input:focus,
@@ -344,7 +344,7 @@ input[type="search"] { /* reset normalize */
 
 .dummy-media-object img {
 	display: inline-block;
-	width: 48px;	
+	width: 48px;
 	margin: 0 10px 0 0;
 	vertical-align: middle;
 }

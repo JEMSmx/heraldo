@@ -10,14 +10,16 @@
   <link href="https://cdn.rawgit.com/cobyism/gridism/0.2.2/gridism.css" rel="stylesheet">
   <link href="<?php echo $config->urls->templates; ?>assets/styles/_main.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
-  <link rel="apple-touch-icon" href="/site-boilerplate/static/455375-147357/images/favicon-180x180.png">
-  <link rel="shortcut icon" href="/site-boilerplate/static/455375-147357/images/favicon-64x64.png">
+  <link rel="apple-touch-icon" href="<?php echo $config->urls->templates; ?>assets/images/heraldo.png">
+  <link rel="shortcut icon" href="<?php echo $config->urls->templates; ?>assets/images/heraldo.png">
+  <meta name="robots" content="noindex">
+<meta name="googlebot" content="noindex">
 </head>
 <body class="login">
 
   <!-- Head: Logo and Main Title -->
   <header>
-    <img src="https://dummyimage.com/100x100/000/fff" alt="#todo">
+    <img src="<?php echo $config->urls->templates; ?>assets/images/heraldo.png" alt="El heraldo">
     <h1>Inicio de Sesión</h1>
   </header>
   <!-- Section: Login -->

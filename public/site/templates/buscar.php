@@ -46,7 +46,7 @@
             if(count($alltags)>30) break;
             $images = $p->images->find("tags%=$q");
             foreach($images as $im) {
-                $tags = $im->tags;
+                $tags = str_replace(" ", "", k::quitaracentos($im->tags));
                 $tags = explode(',', $tags);
                 foreach($tags as $tag) {
                     if(strpos($tag, $q) === false)
@@ -58,7 +58,7 @@
         } 
         foreach(array_slice(array_unique($alltags), 0, 20) as $key => $tag) { ?>
         <a class="dummy-media-object" href="<?php echo $config->urls->root; ?>etiquetas/<?php echo (strpos($tag, " ") === false) ? $tag:str_replace(" ", "-", $tag); ?>">
-          <img src="<?php echo $config->urls->templates; ?>static/455375-147357/images/tag.png" alt="<?php echo $tag ?>"/>
+          <img src="<?php echo $config->urls->templates; ?>static/455375-1493372430/images/tag.png" alt="<?php echo $tag ?>"/>
           <h3><?php echo $tag; ?></h3>
         </a>
         <?php } 
@@ -67,7 +67,7 @@
             $extratags=array_unique($extratags);
             foreach(array_slice($extratags, 0, (20-count($alltags))) as $tag) { ?>
             <a class="dummy-media-object" href="<?php echo $config->urls->root; ?>etiquetas/<?php echo (strpos($tag, " ") === false) ? $tag:str_replace(" ", "-", $tag); ?>">
-              <img src="<?php echo $config->urls->templates; ?>static/455375-147357/images/tag.png" alt="<?php echo $tag ?>"/>
+              <img src="<?php echo $config->urls->templates; ?>static/455375-1493372430/images/tag.png" alt="<?php echo $tag ?>"/>
               <h3><?php echo $tag ?></h3>
           </a>
    <?php    } 

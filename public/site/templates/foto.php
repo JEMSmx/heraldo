@@ -26,7 +26,7 @@
       </div>
       <div class="unit half">
         <h1><?php echo $name[0]; ?></h1>
-        <h2>Categoria: <a href="<?php echo $config->urls->root.'categoria/'.$page->category->value; ?>"><span><?php echo $page->category->title; ?></span></a></h2>
+        <h2>Categoria: <a href="<?php echo $config->urls->root.'categoria/'.$page->category->value; ?>" target="_top"><span><?php echo $page->category->title; ?></span></a></h2>
         <h3>Album: <a href="<?php echo $page->url; ?>"><span><?php echo $page->title; ?></span></a></h3>
         <p><?php echo $image->description; ?></p>
         <?php if($image->autor){ ?> 
@@ -47,7 +47,8 @@
 
         if($image->tags){ ?>
           <p><span>Etiquetas: </span>
-          <?php $etiquetas=explode(",", $image->tags);
+          <?php $tags_wi = str_replace(" ", "", k::quitaracentos($image->tags));
+                $etiquetas=explode(",", $tags_wi);
                 foreach ($etiquetas as $number=>$etiqueta) {  
                   $number++;
                   $etiqueta_url=(strpos($etiqueta, " ") === false) ? $etiqueta:str_replace(" ", "-", $etiqueta);
@@ -55,9 +56,10 @@
                 } ?>
           </p>
         <?php } ?>
+        <?php if($user->hasRole('administrator') || $user->hasRole('superuser') || $user->hasRole('admindoctos') || $user->hasRole('adminfotografo') || $user->hasRole('fotografo') || $user->hasRole('admindisenador') || $user->hasRole('disenador') || $user->hasRole('coeditor') || $user->hasRole('adminvideos') || $user->hasRole('editor')){ ?> 
         <button onclick="dFoto();"class="btn">Descargar</button>
        <input type="hidden" id="chk" name="checksum" value="<?php echo k::encrypt($image.'<>'.$image->filename.':'.time()); ?>">
-                    
+         <?php } ?>           
       </div>
      </div>
    </div>

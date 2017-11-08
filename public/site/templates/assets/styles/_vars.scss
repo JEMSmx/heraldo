@@ -2,7 +2,7 @@
 $white: #ffffff;
 $black: #000000;
 $color-primary:   #323232;  .k-color-primary   { color: $color-primary;   };  .k-bg-color-primary   { background-color: $color-primary;   }
-$color-secondary: #3ba1ae;  .k-color-secondary { color: $color-secondary; };  .k-bg-color-secondary { background-color: $color-secondary; }
+$color-secondary: #3db5e6;  .k-color-secondary { color: $color-secondary; };  .k-bg-color-secondary { background-color: $color-secondary; }
 $color-inverse:   #fff;     .k-color-inverse   { color: $color-inverse;   };  .k-bg-color-inverse   { background-color: $color-inverse;   }
 $color-success:   #5CB85C;  .k-color-success   { color: $color-success;   };  .k-bg-color-success   { background-color: $color-success;   }
 $color-info:      #5bc0de;  .k-color-info      { color: $color-info;      };  .k-bg-color-info      { background-color: $color-info;      }
@@ -33,7 +33,7 @@ $font-family-base: 'Raleway', sans-serif;;
 $headings-font-family: 'Raleway', sans-serif;;
 $font-size-base: 18px;
 
-// media queries 
+// media queries
 $units-stack: 768px;
 $screen-xs-min: 609px;
 $screen-sm-min: 808px + 17;
@@ -108,7 +108,7 @@ p {
       top: 50%;
       transform: translateY(-50%);
       left: 0;
-      right: 0; 
+      right: 0;
       margin: auto;
 }
 

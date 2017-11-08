@@ -1,7 +1,7 @@
 <?php
 if(!$user->isLoggedin()) $session->redirect("/"); 
 
-if($user->hasRole('administrator') || $user->hasRole('superuser') || $user->hasRole('manager')){ 
+if(true){ 
 	$checksum=k::decrypt(str_replace(" ", "+", $input->get->checksum));
 
 	if(strpos($checksum, ":") === false) $session->redirect("/"); 
@@ -22,7 +22,7 @@ if($user->hasRole('administrator') || $user->hasRole('superuser') || $user->hasR
 
 	$filename = $album->name.'.zip';
 
-	if($zip->open($filename,ZIPARCHIVE::CREATE)===true) {
+	if($zip->open('/tmp/'.$filename,ZIPARCHIVE::CREATE)===true) {
 
 	  foreach ($album->images as $image) {
 	    $zip->addFile($image->filename, basename($image->filename));
@@ -32,8 +32,8 @@ if($user->hasRole('administrator') || $user->hasRole('superuser') || $user->hasR
 
 	  if(!$filename) die("download not found");
 
-	  wireSendFile($filename, array('exit' => false));
-	  unlink($filename);
+	  wireSendFile('/tmp/'.$filename, array('exit' => false));
+	  unlink('/tmp/'.$filename);
 	  exit;
 	}
 
